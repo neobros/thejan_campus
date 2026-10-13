@@ -1,0 +1,9 @@
+# Robots rules do not secure content — private pages are protected by authentication on the server.
+User-agent: *
+Disallow: /apply/confirmation
+Disallow: /applicant/
+Disallow: /admin/
+Disallow: /search
+
+# Replace [DOMAIN] with the production domain before launch.
+Sitemap: https://[DOMAIN]/sitemap.xml
