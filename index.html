@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <link rel="icon" type="image/png" sizes="64x64" href="/brand/favicon-64.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/brand/favicon-512.png" />
+    <link rel="apple-touch-icon" href="/brand/apple-touch-icon.png" />
+    <meta name="theme-color" content="#070b14" />
+
+    <!-- Static fallbacks for crawlers that do not run JavaScript. Removed on boot; pages render their own metadata. -->
+    <title data-static-head>AIT</title>
+    <meta data-static-head name="description" content="Explore study opportunities at AIT. Compare courses, review entry requirements and speak with our admissions team about your next step." />
+    <meta data-static-head property="og:type" content="website" />
+    <meta data-static-head property="og:title" content="AIT" />
+    <meta data-static-head property="og:description" content="Compare courses, review entry requirements and speak with our admissions team about your next step." />
+    <meta data-static-head property="og:image" content="/og-default.jpg" />
+    <meta data-static-head name="twitter:card" content="summary_large_image" />
+
+    <script>
+      // Apply the saved colour theme before first paint to avoid a flash. Default is dark; a saved
+      // 'system' preference follows the OS, and an explicit 'light'/'dark' wins.
+      ;(function () {
+        var theme = 'dark'
+        try {
+          var saved = localStorage.getItem('campus-theme')
+          if (saved === 'light' || saved === 'dark') theme = saved
+          else if (saved === 'system') theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+        } catch (e) {}
+        var root = document.documentElement
+        root.dataset.theme = theme
+        root.style.colorScheme = theme
+        var meta = document.querySelector('meta[name="theme-color"]')
+        if (meta) meta.setAttribute('content', theme === 'dark' ? '#070b14' : '#faf9f6')
+      })()
+    </script>
+  </head>
+  <body>
+    <noscript>
+      <div style="padding: 1rem; font-family: system-ui, sans-serif; background: #fff4db; color: #1a1405">
+        This website needs JavaScript for course search and online forms. Please enable JavaScript, or contact our admissions team directly.
+      </div>
+    </noscript>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
