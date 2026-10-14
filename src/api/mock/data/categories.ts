@@ -1,7 +1,7 @@
 import type { CourseCategory } from '@/api/types'
 import { media } from './media'
 
-/** DEMO DATA — study areas for discussion only (specification §5.5). Create only areas the client offers. */
+/** Study areas for the catalogue. Create only areas the provider offers. */
 export type CategorySeed = Omit<CourseCategory, 'courseCount'>
 
 export const categories: CategorySeed[] = [
@@ -19,61 +19,13 @@ export const categories: CategorySeed[] = [
       'Career changers moving into office, coordination or supervisory roles',
       'People already working who want to formalise their skills',
     ],
-    pathways: ['Progress from certificate to diploma and advanced diploma study', 'Explore approved further-study options with admissions'],
-  },
-  {
-    id: 'cat-it',
-    slug: 'information-technology',
-    name: 'Information Technology',
-    summary: 'Programming, networking, cloud and cyber security foundations.',
-    description:
-      'Information technology courses combine technical fundamentals with hands-on lab work. Students build, configure and secure systems while developing the problem-solving and teamwork skills used in IT projects.',
-    icon: 'laptop',
-    image: media.category['information-technology'],
-    suitableFor: [
-      'Beginners who enjoy problem solving and technology',
-      'Students with some coding or IT experience who want structured training',
-      'Professionals adding technical skills to their current role',
-    ],
-    pathways: ['Move from foundation IT skills into specialist diploma study', 'Discuss credit for previous IT study or industry certificates'],
-  },
-  {
-    id: 'cat-hospitality',
-    slug: 'hospitality',
-    name: 'Hospitality & Cookery',
-    summary: 'Commercial cookery and hospitality management with practical kitchen training.',
-    description:
-      'Hospitality courses are taught in training kitchens and service environments. Students develop practical techniques, food safety habits and the organisational skills used across restaurants, hotels and events.',
-    icon: 'chef-hat',
-    image: media.category.hospitality,
-    suitableFor: [
-      'People who enjoy hands-on, fast-paced work',
-      'Current hospitality workers seeking formal training',
-      'Students interested in kitchen, service or venue management',
-    ],
-    pathways: ['Combine cookery skills with hospitality management study', 'Some courses include supervised work placement'],
-  },
-  {
-    id: 'cat-health',
-    slug: 'health',
-    name: 'Health & Community',
-    summary: 'Care, support and community services training with supervised placement.',
-    description:
-      'Health and community courses prepare students to support people with care and respect. Learning combines classroom theory, simulated practice and, where required, supervised placement in an approved setting.',
-    icon: 'heart-pulse',
-    image: media.category.health,
-    suitableFor: [
-      'People who want to support others in care or community settings',
-      'Students seeking practical, people-focused work',
-      'Current support workers looking to formalise their skills',
-    ],
-    pathways: ['Progress from certificate-level care to community services diploma study', 'Placement requirements are explained on each course page'],
+    pathways: ['Progress from diploma to advanced diploma study', 'Explore approved further-study options with admissions'],
   },
   {
     id: 'cat-english',
     slug: 'english',
-    name: 'English Language',
-    summary: 'General and academic English programs to build confidence and study skills.',
+    name: 'English Language (ELICOS)',
+    summary: 'General English programs to build everyday, work and study confidence.',
     description:
       'English language programs help students communicate with confidence in everyday, workplace and academic situations. Classes focus on speaking, listening, reading and writing, with regular feedback on progress.',
     icon: 'languages',
@@ -83,18 +35,70 @@ export const categories: CategorySeed[] = [
       'Applicants preparing for further study taught in English',
       'Professionals who use English at work',
     ],
-    pathways: ['Academic English can help prepare for further study — entry still depends on each course’s requirements'],
+    pathways: ['English can help prepare for further study — entry still depends on each course’s requirements'],
   },
   {
-    id: 'cat-short',
-    slug: 'short-courses',
-    name: 'Short Courses',
-    summary: 'Focused, flexible courses to build a specific skill quickly.',
+    id: 'cat-beauty',
+    slug: 'beauty',
+    name: 'Beauty Therapy',
+    summary: 'Skincare, treatments, makeup and client care for salons and spas.',
     description:
-      'Short courses focus on a single practical skill and are designed to fit around work and other commitments. Many are available online or in the evening.',
+      'Beauty courses are taught in training salons. Students practise facials, waxing, lashes and brows, nails, make-up and body treatments while developing the consultation, hygiene and retail skills used in salons and spas.',
     icon: 'sparkles',
-    image: media.category['short-courses'],
-    suitableFor: ['Working professionals', 'Anyone exploring a new field before committing to longer study'],
-    pathways: ['Short courses are a low-commitment way to explore a study area'],
+    image: media.category.beauty,
+    suitableFor: [
+      'People who enjoy hands-on, client-facing work',
+      'Students interested in salon, spa or makeup careers',
+      'Current beauty workers seeking formal qualifications',
+    ],
+    pathways: ['Progress from certificate-level beauty services into diploma study', 'Some courses include supervised salon practice'],
+  },
+  {
+    id: 'cat-hairdressing',
+    slug: 'hairdressing',
+    name: 'Hairdressing & Salon',
+    summary: 'Cutting, colouring, styling and salon management training.',
+    description:
+      'Hairdressing and salon courses combine technical training in a working salon with the service, teamwork and business skills needed to run a salon floor.',
+    icon: 'palette',
+    image: media.category.hairdressing,
+    suitableFor: [
+      'People who enjoy creative, practical work',
+      'Current hairdressers advancing their skills or moving into management',
+      'Students interested in salon leadership',
+    ],
+    pathways: ['Move from certificate hairdressing into advanced technical or salon-management study'],
+  },
+  {
+    id: 'cat-construction',
+    slug: 'construction',
+    name: 'Building & Construction',
+    summary: 'Building, supervision and trade skills taught in real or simulated workplaces.',
+    description:
+      'Building and construction courses develop the technical, planning and compliance skills used on site. Learning is delivered in real or closely simulated workplaces, with a focus on safety and current codes and standards.',
+    icon: 'building',
+    image: media.category.construction,
+    suitableFor: [
+      'People who want hands-on trade or site-supervision careers',
+      'Workers in construction seeking formal qualifications',
+      'Students planning to move into building supervision or contracting',
+    ],
+    pathways: ['Licensing and registration depend on jurisdiction-specific checks — confirm with the relevant authority'],
+  },
+  {
+    id: 'cat-civil',
+    slug: 'civil-construction',
+    name: 'Civil Construction Design',
+    summary: 'Civil design support for engineering, planning and infrastructure projects.',
+    description:
+      'Civil construction design courses prepare students to support engineers on infrastructure projects — preparing detailed designs, drawings and documentation, and coordinating technical and quality processes.',
+    icon: 'compass',
+    image: media.category['civil-construction'],
+    suitableFor: [
+      'People interested in civil, infrastructure and design work',
+      'Technical staff supporting engineering teams',
+      'Students planning careers in civil design and documentation',
+    ],
+    pathways: ['Progress from diploma to advanced diploma civil design study'],
   },
 ]

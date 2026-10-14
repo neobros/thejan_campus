@@ -10,22 +10,27 @@ export interface Palette {
 }
 
 export const PALETTES: Record<Tone, Palette> = {
-  brand: { deep: '#0b1240', mid: '#2b45b8', light: '#8ea8ff', accent: '#f2aa2e' },
+  brand: { deep: '#0b1a40', mid: '#2563eb', light: '#93c5fd', accent: '#ef4444' },
   sky: { deep: '#06192e', mid: '#0a4f82', light: '#38bdf8', accent: '#bae6fd' },
-  gold: { deep: '#3a1a05', mid: '#b4530a', light: '#f5b43a', accent: '#fff1cc' },
+  gold: { deep: '#450a0a', mid: '#b91c1c', light: '#f87171', accent: '#fee2e2' },
   emerald: { deep: '#03281f', mid: '#0a7a58', light: '#5eead4', accent: '#d1fae5' },
   violet: { deep: '#250c4d', mid: '#6d28d9', light: '#c4b5fd', accent: '#fbcfe8' },
   rose: { deep: '#48091f', mid: '#be123c', light: '#fda4af', accent: '#fde68a' },
   teal: { deep: '#042f33', mid: '#0f766e', light: '#5eead4', accent: '#fef3c7' },
-  slate: { deep: '#111827', mid: '#475569', light: '#cbd5e1', accent: '#f2aa2e' },
+  slate: { deep: '#111827', mid: '#475569', light: '#cbd5e1', accent: '#ef4444' },
 }
 
 const CATEGORY_TONES: Record<string, Tone> = {
   business: 'brand',
+  english: 'violet',
+  beauty: 'rose',
+  hairdressing: 'gold',
+  construction: 'slate',
+  'civil-construction': 'sky',
+  // Retained for any legacy references.
   'information-technology': 'sky',
   hospitality: 'gold',
   health: 'emerald',
-  english: 'violet',
   'short-courses': 'rose',
 }
 

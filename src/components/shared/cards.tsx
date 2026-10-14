@@ -80,7 +80,7 @@ export function CourseCard({
             <dd>{course.nextIntake ? formatDate(course.nextIntake.startDate, 'medium') : 'No upcoming intakes'}</dd>
           </div>
         </dl>
-        {audience && (
+        {audience && course.feeFrom[audience] && (
           <div className="mt-5 rounded-2xl bg-surface-muted px-4 py-3">
             <p className="text-xs text-ink-subtle">{AUDIENCE_LABELS[audience]} tuition from</p>
             <FeeAmount fee={course.feeFrom[audience]} size="sm" />

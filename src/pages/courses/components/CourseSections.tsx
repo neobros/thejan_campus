@@ -4,6 +4,7 @@ import {
   Briefcase,
   CalendarRange,
   Check,
+  ChevronDown,
   ClipboardCheck,
   Clock,
   FileCheck,
@@ -229,27 +230,30 @@ export function OutcomesSection({ course }: { course: Course }) {
 type ModuleFilter = 'all' | 'core' | 'elective'
 
 export function CurriculumSection({ course }: { course: Course }) {
+  const [open, setOpen] = useState(false)
   const [filter, setFilter] = useState<ModuleFilter>('all')
   const core = course.modules.filter((m) => m.type === 'core').length
   const elective = course.modules.length - core
   const modules = filter === 'all' ? course.modules : course.modules.filter((m) => m.type === filter)
   const count = (n: number) => <span className="rounded-full bg-current/15 px-1.5 text-xs tabular-nums">{n}</span>
+  const total = course.modules.length
 
   return (
     <CourseSection
       id="curriculum"
       eyebrow="What you will study"
       title="Curriculum"
-      intro={`${course.modules.length} ${course.modules.length === 1 ? 'module' : 'modules'}${elective ? ` · ${core} core and ${elective} elective` : ''}`}
+      intro={`${total} ${total === 1 ? 'unit' : 'units'}${elective ? ` · ${core} core and ${elective} elective` : ''}`}
+      // The filter only appears once the list is expanded.
       action={
-        elective > 0 && core > 0 ? (
+        open && elective > 0 && core > 0 ? (
           <SegmentedControl<ModuleFilter>
-            label="Show modules"
+            label="Show units"
             size="sm"
             value={filter}
             onChange={setFilter}
             options={[
-              { value: 'all', label: <>All {count(course.modules.length)}</> },
+              { value: 'all', label: <>All {count(total)}</> },
               { value: 'core', label: <>Core {count(core)}</> },
               { value: 'elective', label: <>Elective {count(elective)}</> },
             ]}
@@ -257,35 +261,66 @@ export function CurriculumSection({ course }: { course: Course }) {
         ) : undefined
       }
     >
-      <ul className="space-y-3" aria-live="polite">
-        <AnimatePresence initial={false} mode="popLayout">
-          {modules.map((module, index) => (
-            <motion.li
-              key={`${module.code ?? ''}-${module.title}`}
-              layout="position"
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.98 }}
-              transition={{ duration: 0.4, delay: Math.min(index, 8) * 0.03, ease: EASE_OUT_EXPO }}
-              className="grid gap-x-5 gap-y-2 rounded-3xl border border-line bg-surface p-5 sm:grid-cols-[7.5rem_1fr_auto] sm:items-start sm:p-6"
-            >
-              <span className="font-mono text-xs text-ink-subtle sm:pt-1">{module.code ?? <span className="sr-only">No module code</span>}</span>
-              <div className="min-w-0">
-                <h3 className="font-semibold leading-snug text-ink">{module.title}</h3>
-                {module.summary && <p className="mt-1.5 text-[0.9375rem] leading-relaxed text-ink-muted">{module.summary}</p>}
-              </div>
-              <Badge tone={module.type === 'core' ? 'brand' : 'accent'} className="w-fit sm:mt-0.5">
-                {module.type === 'core' ? 'Core' : 'Elective'}
-              </Badge>
-            </motion.li>
-          ))}
-        </AnimatePresence>
-      </ul>
-      {course.moduleNote && (
-        <Reveal className="mt-6">
-          <Callout title="About modules">{course.moduleNote}</Callout>
-        </Reveal>
-      )}
+      {/* Units are hidden by default — the visitor expands them to read the full list. */}
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        aria-expanded={open}
+        aria-controls="curriculum-units"
+        className="group flex w-full items-center justify-between gap-4 rounded-3xl border border-line bg-surface px-5 py-4 text-left transition-colors hover:border-primary/40 sm:px-6"
+      >
+        <span className="min-w-0">
+          <span className="block font-semibold text-ink">{open ? 'Hide the unit list' : `View the ${total} units in this course`}</span>
+          <span className="mt-0.5 block text-sm text-ink-muted">{open ? 'Collapse to keep the page short.' : `${core} core${elective ? ` and ${elective} elective` : ''} — tap to expand.`}</span>
+        </span>
+        <span className="grid size-10 shrink-0 place-items-center rounded-full border border-line bg-canvas text-ink transition-colors group-hover:border-primary group-hover:bg-primary group-hover:text-on-primary">
+          <ChevronDown aria-hidden className={cn('size-5 transition-transform duration-300', open && 'rotate-180')} />
+        </span>
+      </button>
+
+      <AnimatePresence initial={false}>
+        {open && (
+          <motion.div
+            id="curriculum-units"
+            key="units"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.35, ease: EASE_OUT_EXPO }}
+            className="overflow-hidden"
+          >
+            <ul className="mt-4 space-y-3" aria-live="polite">
+              <AnimatePresence initial={false} mode="popLayout">
+                {modules.map((module, index) => (
+                  <motion.li
+                    key={`${module.code ?? ''}-${module.title}`}
+                    layout="position"
+                    initial={{ opacity: 0, y: 12 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 0.98 }}
+                    transition={{ duration: 0.4, delay: Math.min(index, 8) * 0.03, ease: EASE_OUT_EXPO }}
+                    className="grid gap-x-5 gap-y-2 rounded-3xl border border-line bg-surface p-5 sm:grid-cols-[7.5rem_1fr_auto] sm:items-start sm:p-6"
+                  >
+                    <span className="font-mono text-xs text-ink-subtle sm:pt-1">{module.code ?? <span className="sr-only">No unit code</span>}</span>
+                    <div className="min-w-0">
+                      <h3 className="font-semibold leading-snug text-ink">{module.title}</h3>
+                      {module.summary && <p className="mt-1.5 text-[0.9375rem] leading-relaxed text-ink-muted">{module.summary}</p>}
+                    </div>
+                    <Badge tone={module.type === 'core' ? 'brand' : 'accent'} className="w-fit sm:mt-0.5">
+                      {module.type === 'core' ? 'Core' : 'Elective'}
+                    </Badge>
+                  </motion.li>
+                ))}
+              </AnimatePresence>
+            </ul>
+            {course.moduleNote && (
+              <Reveal className="mt-6">
+                <Callout title="About units">{course.moduleNote}</Callout>
+              </Reveal>
+            )}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </CourseSection>
   )
 }
