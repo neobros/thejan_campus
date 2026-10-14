@@ -7,7 +7,6 @@ import type {
   CourseOffering,
   CourseSummary,
   DeliveryMode,
-  FeeSchedule,
   Intake,
   IntakeStatus,
   Money,
@@ -18,7 +17,7 @@ import { categories as categorySeeds } from './data/categories'
 import { courseSeeds, ENTRY_DEFAULTS, PATHWAY_DISCLAIMER, type CourseSeed } from './data/courses'
 import { resources } from './data/resources'
 import { settings } from './data/settings'
-import { addDays, daysFromToday, isoDate, mondayOfMonth, TODAY, yearEnd, yearStart } from './data/time'
+import { addDays, daysFromToday, isoDate, mondayOfMonth, TODAY } from './data/time'
 
 /**
  * Derives the relational catalogue (courses → offerings → intakes + fee schedules) from the demo
@@ -64,22 +63,6 @@ function buildIntakes(seed: CourseSeed, offeringId: string, campusSlug: string, 
     })
 }
 
-function buildFee(seed: CourseSeed, offeringId: string, audience: Audience): FeeSchedule | null {
-  const fee = seed.fees[audience]
-  if (!fee) return null
-  return {
-    id: `fee__${offeringId}`,
-    version: 1,
-    audience,
-    tuition: { amount: fee.amount, currency: settings.currency, basis: fee.basis },
-    additional: (fee.additional ?? []).map((item) => ({ ...item, currency: item.currency || settings.currency })),
-    validFrom: yearStart(0),
-    validTo: yearEnd(1),
-    paymentNotes:
-      'Payment instructions are sent with your admissions outcome. Instalment options and refunds are explained in the fees and refunds policy.',
-  }
-}
-
 function buildOfferings(seed: CourseSeed): CourseOffering[] {
   const offerings: CourseOffering[] = []
   seed.campuses.forEach((campusSlug, campusIndex) => {
@@ -96,7 +79,8 @@ function buildOfferings(seed: CourseSeed): CourseOffering[] {
           audience,
           deliveryMode: mode,
           intakes: buildIntakes(seed, id, campusSlug, campus.timezone),
-          fee: buildFee(seed, id, audience),
+          // Fees removed per client request (draft/indicative). Seed fee data is kept for easy restore.
+          fee: null,
         })
       }
     }
@@ -188,7 +172,7 @@ export const courses: Course[] = courseSeeds.map((seed) => {
     },
     delivery: seed.delivery,
     placement: seed.placement ?? null,
-    creditTransfer: seed.creditTransfer ?? null,
+    creditTransfer: null, // "Credit and prior learning" section removed per client request.
     pathways: { ...seed.pathways, disclaimer: PATHWAY_DISCLAIMER },
     downloads: resources.filter((r) => seed.downloads?.includes(r.slug) || r.courseSlugs.includes(seed.slug)),
     offerings,

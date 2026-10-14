@@ -104,6 +104,11 @@ function HomeHero({ page }: { page: Page }) {
       <div aria-hidden className="absolute inset-0 -z-20 bg-gradient-to-t from-[var(--night)] via-[var(--night)]/60 to-[var(--night)]/15" />
       <div aria-hidden className="absolute inset-0 -z-20 bg-gradient-to-r from-[var(--night)]/85 via-[var(--night)]/35 to-transparent" />
       <Aurora className="-z-10 opacity-60 mix-blend-screen" />
+      {/* Red + blue background glows. */}
+      <div
+        aria-hidden
+        className="absolute inset-0 -z-10 opacity-80 mix-blend-screen [background:radial-gradient(52%_58%_at_10%_24%,rgb(37_99_235/0.55),transparent_60%),radial-gradient(46%_52%_at_90%_18%,rgb(239_68_68/0.45),transparent_62%)]"
+      />
       <div aria-hidden className="absolute inset-0 -z-10 bg-grid opacity-50 mask-fade-radial [--grid-color:rgb(255_255_255/0.05)] [--grid-size:72px]" />
       {/* Soft bottom edge: the banner dissolves into the page instead of ending on a hard line. */}
       <div aria-hidden className="absolute inset-x-0 bottom-0 -z-10 h-28 bg-gradient-to-b from-transparent to-[var(--page-bg)] sm:h-36" />

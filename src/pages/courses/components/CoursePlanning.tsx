@@ -250,6 +250,7 @@ export function PlanStudyCard({ course, audience, onAudienceChange }: { course: 
   useStickyTop(ref)
   const offerings = offeringsFor(course, audience)
   const next = nextOpenIntake(offerings)
+  const hasFees = course.offerings.some((o) => o.fee !== null)
   const brochure = course.downloads.find((d) => d.type === 'brochure') ?? course.downloads[0]
 
   return (
@@ -268,13 +269,15 @@ export function PlanStudyCard({ course, audience, onAudienceChange }: { course: 
           )}
           <AudienceFade audience={audience}>
             <div className="space-y-6">
-              <div>
-                <p className="text-sm text-ink-subtle">Tuition from</p>
-                {audience ? <FeeAmount fee={course.feeFrom[audience]} size="lg" className="mt-1" /> : <p className="mt-1 text-ink-muted">{NO_FEE_MESSAGE}</p>}
-                <a href="#fees" className="mt-1 inline-block text-sm font-semibold text-primary-ink underline-offset-4 hover:underline">
-                  See all fees and costs
-                </a>
-              </div>
+              {hasFees && (
+                <div>
+                  <p className="text-sm text-ink-subtle">Tuition from</p>
+                  {audience ? <FeeAmount fee={course.feeFrom[audience]} size="lg" className="mt-1" /> : <p className="mt-1 text-ink-muted">{NO_FEE_MESSAGE}</p>}
+                  <a href="#fees" className="mt-1 inline-block text-sm font-semibold text-primary-ink underline-offset-4 hover:underline">
+                    See all fees and costs
+                  </a>
+                </div>
+              )}
               <div className="rounded-2xl bg-surface-muted p-4">
                 <p className="text-sm text-ink-subtle">Next available intake</p>
                 {next ? (
@@ -346,11 +349,16 @@ export function MobileActionBar({ course, audience, visible }: { course: Course;
           {/* Lift the shared back-to-top button above this bar while it is shown. */}
           <style>{`@media (width < 64rem) { button[aria-label='Back to top'] { translate: 0 -5.25rem; transition: translate 300ms ease; } }`}</style>
           <section aria-label="Apply or enquire" className="mx-auto max-w-xl rounded-[1.5rem] border border-line bg-surface/90 p-3 shadow-float backdrop-blur-xl">
-            <p className="truncate px-1 pb-2 text-xs text-ink-subtle">
-              {next ? `Next intake ${formatDate(next.startDate, 'medium')}` : 'No intakes open right now'}
-              {' · '}
-              {fee ? `Tuition from ${formatMoney(fee.amount, fee.currency)} ${FEE_BASIS_LABELS[fee.basis]}` : 'Contact admissions for current fees'}
-            </p>
+            {(next || fee) && (
+              <p className="truncate px-1 pb-2 text-xs text-ink-subtle">
+                {[
+                  next && `Next intake ${formatDate(next.startDate, 'medium')}`,
+                  fee && `Tuition from ${formatMoney(fee.amount, fee.currency)} ${FEE_BASIS_LABELS[fee.basis]}`,
+                ]
+                  .filter(Boolean)
+                  .join(' · ')}
+              </p>
+            )}
             <div className={cn('grid gap-2', next && 'grid-cols-2')}>
               <ButtonLink href={enquireHref({ course: course.slug, audience })} variant="secondary" size="md" className="w-full">
                 Enquire

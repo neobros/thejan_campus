@@ -54,11 +54,11 @@ export const media = {
   },
   category: {
     business: slot('category-business', 'Students presenting a business plan to their class', 'brand', 'briefcase'),
-    'information-technology': slot('category-it', 'Student writing code on dual monitors in a computer lab', 'sky', 'laptop'),
-    hospitality: slot('category-hospitality', 'Cookery students plating dishes in a training kitchen', 'gold', 'chef-hat'),
-    health: slot('category-health', 'Care students practising skills in a simulated care room', 'emerald', 'heart-pulse'),
     english: slot('category-english', 'English language class in discussion around a table', 'violet', 'languages'),
-    'short-courses': slot('category-short-courses', 'Adult learners in an evening workshop', 'rose', 'sparkles'),
+    beauty: slot('category-beauty', 'Beauty therapy students practising treatments in a training salon', 'rose', 'sparkles'),
+    hairdressing: slot('category-hairdressing', 'Hairdressing students styling hair in a training salon', 'gold', 'palette'),
+    construction: slot('category-construction', 'Building and construction students on a training site', 'slate', 'building'),
+    'civil-construction': slot('category-civil-construction', 'Civil design students working on plans at computer workstations', 'sky', 'compass'),
   },
   campus: {
     city: slot('campus-city', 'Exterior of City Campus on a busy street', 'brand', 'building', 1600, 1000),
@@ -112,11 +112,11 @@ export const media = {
 
 const categorySlots = {
   business: 'category-business',
-  'information-technology': 'category-it',
-  hospitality: 'category-hospitality',
-  health: 'category-health',
   english: 'category-english',
-  'short-courses': 'category-short-courses',
+  beauty: 'category-beauty',
+  hairdressing: 'category-hairdressing',
+  construction: 'category-construction',
+  'civil-construction': 'category-civil-construction',
 } as const
 
 /** Crops used when several courses share their study-area photo, so sibling cards differ. */
