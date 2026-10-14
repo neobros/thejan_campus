@@ -14,7 +14,8 @@ export const aboutPage: Page = {
   slug: 'about',
   title: 'About AIT',
   eyebrow: 'About us',
-  summary: 'Practical teaching, personal support and clear information. Get to know who we are, how we teach and what guides us.',
+  summary:
+    'AIT — the Australian Institute of Technology — offers international education and vocational training opportunities in Sri Lanka, through selected programmes delivered in collaboration with Australian education providers.',
   hero: {
     image: media.page.about,
     actions: [
@@ -26,32 +27,32 @@ export const aboutPage: Page = {
     {
       id: 'about-intro',
       type: 'intro',
-      lead: 'AIT provides [APPROVED_STUDY_AREAS] education at [LOCATIONS]. Our teaching approach combines [CLIENT_CONFIRMED_METHODS] with support throughout the student journey.',
-      body: 'We offer certificate, diploma, English language and short courses taught by trainers who bring practical experience into the classroom. Whether you are leaving school, changing careers or building on skills you already have, we aim to give you clear information and steady support from your first enquiry to your final assessment.',
+      lead: 'AIT (Australian Institute of Technology) connects students in Sri Lanka with selected international education and vocational training opportunities, offered in collaboration with Australian education providers.',
+      body: 'AIT was established through the initiative of AusAsia Education & Migration Consultants, building on a commitment to connecting people with international education opportunities. With AIT, that vision takes a new direction — education and vocational training opportunities delivered locally in Sri Lanka. We aim to give students clear information and steady support, and to connect programme learning with practical activities and relevant industry contexts, according to the requirements of each course.',
       highlights: [
-        { label: 'Year established', value: '[YEAR]', icon: 'landmark' },
-        { label: 'City, Riverside and Parkview', value: '3 campuses', icon: 'building' },
-        { label: 'Business, IT, hospitality, health, English and short courses', value: '6 study areas', icon: 'layers' },
-        { label: 'On-campus, blended and online', value: '3 study modes', icon: 'laptop' },
+        { label: 'Based in', value: 'Colombo 14, Sri Lanka', icon: 'map-pin' },
+        { label: 'Founded through the initiative of', value: 'AusAsia', icon: 'handshake' },
+        { label: 'In collaboration with', value: 'Australian providers', icon: 'globe' },
+        { label: 'Local access to', value: 'Vocational training', icon: 'layers' },
       ],
     },
     {
       id: 'about-overview',
       type: 'split',
       background: 'alt',
-      eyebrow: 'Who we are',
-      heading: 'A practical place to learn',
-      body: 'AIT is operated by [LEGAL_ENTITY_NAME]. [Approved ownership description, if it is to be published.]\n\nOur courses are built around the skills people use at work and in further study. Classes combine theory with hands-on practice in computer labs, training kitchens, simulated care rooms and flexible classrooms, and trainers give regular feedback so you always know how you are progressing.',
+      eyebrow: 'Our story',
+      heading: 'A New Chapter in Education',
+      body: 'AIT was established through the initiative of AusAsia Education & Migration Consultants, extending a vision of connecting Sri Lankan students with international education opportunities. With AIT, that vision takes a new direction through education and vocational training opportunities delivered locally in Sri Lanka.\n\nAIT is the primary brand and identity for this work; AusAsia’s role is as the founding initiator. We aim to work with Australian and international education providers, identifying each organisation’s role — delivery, awarding or oversight — for the relevant programmes.',
       image: media.home.why,
       imageSide: 'right',
       bullets: [
-        'Certificate, diploma, English language and short courses',
-        'Three campuses, each with specialist facilities',
-        'Support for study, wellbeing, accessibility and administration',
+        'Selected international programmes, accessed locally in Sri Lanka',
+        'Delivered in collaboration with Australian education providers',
+        'Practical, vocational learning linked to relevant industry contexts',
       ],
       actions: [
-        { label: 'Our campuses', href: '/campuses', variant: 'primary' },
-        { label: 'Student support', href: '/student-support', variant: 'ghost' },
+        { label: 'Explore courses', href: '/courses', variant: 'primary' },
+        { label: 'Enquire now', href: '/enquire', variant: 'ghost' },
       ],
     },
     {

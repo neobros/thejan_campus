@@ -41,11 +41,11 @@ export const navigation: Navigation = {
           title: 'Study areas',
           items: [
             { label: 'Business & Management', href: '/courses/category/business', icon: 'briefcase', tone: 'brand' },
-            { label: 'Information Technology', href: '/courses/category/information-technology', icon: 'laptop', tone: 'sky' },
-            { label: 'Hospitality & Cookery', href: '/courses/category/hospitality', icon: 'chef-hat', tone: 'gold' },
-            { label: 'Health & Community', href: '/courses/category/health', icon: 'heart-pulse', tone: 'emerald' },
-            { label: 'English Language', href: '/courses/category/english', icon: 'languages', tone: 'violet' },
-            { label: 'Short Courses', href: '/courses/category/short-courses', icon: 'sparkles', tone: 'rose' },
+            { label: 'Beauty Therapy', href: '/courses/category/beauty', icon: 'sparkles', tone: 'rose' },
+            { label: 'Hairdressing & Salon', href: '/courses/category/hairdressing', icon: 'palette', tone: 'gold' },
+            { label: 'Building & Construction', href: '/courses/category/construction', icon: 'building', tone: 'slate' },
+            { label: 'Civil Construction Design', href: '/courses/category/civil-construction', icon: 'compass', tone: 'sky' },
+            { label: 'English Language (ELICOS)', href: '/courses/category/english', icon: 'languages', tone: 'violet' },
           ],
         },
         {

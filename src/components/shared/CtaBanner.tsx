@@ -23,6 +23,8 @@ export function CtaBanner({
 }) {
   return (
     <Reveal y={32} scale={0.98} className={cn('theme-night relative isolate overflow-hidden rounded-[2.25rem] px-6 py-14 sm:px-12 sm:py-20', className)}>
+      {/* Red → blue background. */}
+      <div aria-hidden className="absolute inset-0 -z-20 bg-gradient-to-br from-brand-700 via-[#130a24] to-gold-800" />
       <Aurora />
       <div aria-hidden className="absolute inset-0 -z-10 bg-grid opacity-40 mask-fade-radial [--grid-color:rgb(255_255_255/0.06)]" />
       <div aria-hidden className="absolute -right-24 -top-24 size-80 rounded-full border border-white/10" />

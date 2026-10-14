@@ -280,6 +280,108 @@ export const providedImages: Record<string, ProvidedImage> = {
     "width": 1600,
     "height": 1200
   },
+  "category-beauty": {
+    "src": "/images/category-beauty-1600.webp",
+    "srcSet": "/images/category-beauty-640.webp 640w, /images/category-beauty-1024.webp 1024w, /images/category-beauty-1600.webp 1600w",
+    "width": 1600,
+    "height": 1200
+  },
+  "category-civil-construction": {
+    "src": "/images/category-civil-construction-1600.webp",
+    "srcSet": "/images/category-civil-construction-640.webp 640w, /images/category-civil-construction-1024.webp 1024w, /images/category-civil-construction-1600.webp 1600w",
+    "width": 1600,
+    "height": 1200
+  },
+  "category-construction": {
+    "src": "/images/category-construction-1600.webp",
+    "srcSet": "/images/category-construction-640.webp 640w, /images/category-construction-1024.webp 1024w, /images/category-construction-1600.webp 1600w",
+    "width": 1600,
+    "height": 1200
+  },
+  "category-hairdressing": {
+    "src": "/images/category-hairdressing-1600.webp",
+    "srcSet": "/images/category-hairdressing-640.webp 640w, /images/category-hairdressing-1024.webp 1024w, /images/category-hairdressing-1600.webp 1600w",
+    "width": 1600,
+    "height": 1200
+  },
+  "course-advanced-diploma-of-business": {
+    "src": "/images/course-advanced-diploma-of-business-1600.webp",
+    "srcSet": "/images/course-advanced-diploma-of-business-640.webp 640w, /images/course-advanced-diploma-of-business-1024.webp 1024w, /images/course-advanced-diploma-of-business-1600.webp 1600w",
+    "width": 1600,
+    "height": 1200
+  },
+  "course-advanced-diploma-of-civil-construction-design": {
+    "src": "/images/course-advanced-diploma-of-civil-construction-design-1600.webp",
+    "srcSet": "/images/course-advanced-diploma-of-civil-construction-design-640.webp 640w, /images/course-advanced-diploma-of-civil-construction-design-1024.webp 1024w, /images/course-advanced-diploma-of-civil-construction-design-1600.webp 1600w",
+    "width": 1600,
+    "height": 1200
+  },
+  "course-certificate-iii-in-beauty-services": {
+    "src": "/images/course-certificate-iii-in-beauty-services-1600.webp",
+    "srcSet": "/images/course-certificate-iii-in-beauty-services-640.webp 640w, /images/course-certificate-iii-in-beauty-services-1024.webp 1024w, /images/course-certificate-iii-in-beauty-services-1600.webp 1600w",
+    "width": 1600,
+    "height": 1200
+  },
+  "course-certificate-iii-in-hairdressing": {
+    "src": "/images/course-certificate-iii-in-hairdressing-1600.webp",
+    "srcSet": "/images/course-certificate-iii-in-hairdressing-640.webp 640w, /images/course-certificate-iii-in-hairdressing-1024.webp 1024w, /images/course-certificate-iii-in-hairdressing-1600.webp 1600w",
+    "width": 1600,
+    "height": 1200
+  },
+  "course-certificate-iii-in-painting-and-decorating": {
+    "src": "/images/course-certificate-iii-in-painting-and-decorating-1600.webp",
+    "srcSet": "/images/course-certificate-iii-in-painting-and-decorating-640.webp 640w, /images/course-certificate-iii-in-painting-and-decorating-1024.webp 1024w, /images/course-certificate-iii-in-painting-and-decorating-1600.webp 1600w",
+    "width": 1600,
+    "height": 1200
+  },
+  "course-certificate-iv-in-beauty-therapy": {
+    "src": "/images/course-certificate-iv-in-beauty-therapy-1600.webp",
+    "srcSet": "/images/course-certificate-iv-in-beauty-therapy-640.webp 640w, /images/course-certificate-iv-in-beauty-therapy-1024.webp 1024w, /images/course-certificate-iv-in-beauty-therapy-1600.webp 1600w",
+    "width": 1600,
+    "height": 1200
+  },
+  "course-certificate-iv-in-hairdressing": {
+    "src": "/images/course-certificate-iv-in-hairdressing-1600.webp",
+    "srcSet": "/images/course-certificate-iv-in-hairdressing-640.webp 640w, /images/course-certificate-iv-in-hairdressing-1024.webp 1024w, /images/course-certificate-iv-in-hairdressing-1600.webp 1600w",
+    "width": 1600,
+    "height": 1200
+  },
+  "course-diploma-of-beauty-therapy": {
+    "src": "/images/course-diploma-of-beauty-therapy-1600.webp",
+    "srcSet": "/images/course-diploma-of-beauty-therapy-640.webp 640w, /images/course-diploma-of-beauty-therapy-1024.webp 1024w, /images/course-diploma-of-beauty-therapy-1600.webp 1600w",
+    "width": 1600,
+    "height": 1200
+  },
+  "course-diploma-of-building-and-construction": {
+    "src": "/images/course-diploma-of-building-and-construction-1600.webp",
+    "srcSet": "/images/course-diploma-of-building-and-construction-640.webp 640w, /images/course-diploma-of-building-and-construction-1024.webp 1024w, /images/course-diploma-of-building-and-construction-1600.webp 1600w",
+    "width": 1600,
+    "height": 1200
+  },
+  "course-diploma-of-business": {
+    "src": "/images/course-diploma-of-business-1600.webp",
+    "srcSet": "/images/course-diploma-of-business-640.webp 640w, /images/course-diploma-of-business-1024.webp 1024w, /images/course-diploma-of-business-1600.webp 1600w",
+    "width": 1600,
+    "height": 1200
+  },
+  "course-diploma-of-civil-construction-design": {
+    "src": "/images/course-diploma-of-civil-construction-design-1600.webp",
+    "srcSet": "/images/course-diploma-of-civil-construction-design-640.webp 640w, /images/course-diploma-of-civil-construction-design-1024.webp 1024w, /images/course-diploma-of-civil-construction-design-1600.webp 1600w",
+    "width": 1600,
+    "height": 1200
+  },
+  "course-diploma-of-salon-management": {
+    "src": "/images/course-diploma-of-salon-management-1600.webp",
+    "srcSet": "/images/course-diploma-of-salon-management-640.webp 640w, /images/course-diploma-of-salon-management-1024.webp 1024w, /images/course-diploma-of-salon-management-1600.webp 1600w",
+    "width": 1600,
+    "height": 1200
+  },
+  "course-general-english-elicos": {
+    "src": "/images/course-general-english-elicos-1600.webp",
+    "srcSet": "/images/course-general-english-elicos-640.webp 640w, /images/course-general-english-elicos-1024.webp 1024w, /images/course-general-english-elicos-1600.webp 1600w",
+    "width": 1600,
+    "height": 1200
+  },
   "nursing-australia-pathway": {
     "src": "/images/nursing-australia-pathway-2400.webp",
     "srcSet": "/images/nursing-australia-pathway-640.webp 640w, /images/nursing-australia-pathway-1024.webp 1024w, /images/nursing-australia-pathway-1600.webp 1600w, /images/nursing-australia-pathway-2400.webp 2400w",
