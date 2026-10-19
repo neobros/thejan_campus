@@ -127,9 +127,9 @@ function HomeHero({ page }: { page: Page }) {
               >
                 {slide.eyebrow && (
                   <Reveal immediate y={12} delay={0.1}>
-                    <p className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.07] px-4 py-1.5 text-sm font-medium text-white/85 backdrop-blur-md">
-                      <Sparkles aria-hidden className="size-4 text-gold-300" />
-                      {slide.eyebrow}
+                    <p className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/[0.07] px-4 py-1.5 text-sm font-semibold uppercase tracking-[0.12em] shadow-[0_0_24px_-6px] shadow-brand-500/40 backdrop-blur-md">
+                      <Sparkles aria-hidden className="size-4 animate-pulse text-accent" />
+                      <span className="animate-gradient text-gradient-brand">{slide.eyebrow}</span>
                     </p>
                   </Reveal>
                 )}
@@ -137,6 +137,7 @@ function HomeHero({ page }: { page: Page }) {
                   text={slide.title}
                   delay={0.2}
                   stagger={0.07}
+                  emphasisClassName="italic text-gradient-brand animate-gradient"
                   className={cn(
                     'mt-7 font-display font-semibold leading-[1] tracking-tight text-white',
                     // Long headlines step down one size so every slide fits in the same hero height.
