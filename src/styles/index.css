@@ -59,6 +59,16 @@
   --animate-ecg: ecg 3.6s linear infinite;
   --animate-fade-in: fade-in 200ms ease-out;
   --animate-hero-progress: hero-progress var(--hero-interval, 7s) linear forwards;
+  --animate-loader: loader-slide 1.15s ease-in-out infinite;
+
+  @keyframes loader-slide {
+    0% {
+      transform: translateX(-130%);
+    }
+    100% {
+      transform: translateX(360%);
+    }
+  }
 
   @keyframes hero-progress {
     from {
@@ -462,6 +472,47 @@
 
 @utility text-gradient-gold {
   background-image: linear-gradient(100deg, var(--color-gold-200), var(--color-gold-400) 45%, var(--color-gold-200));
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Animated red → blue brand gradient text (pair with `animate-gradient`). */
+@utility text-gradient-brand {
+  background-image: linear-gradient(100deg, var(--color-gold-300), var(--color-brand-300) 50%, var(--color-gold-300));
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Higher-contrast variant for use on both light and dark surfaces (e.g. the header). */
+@utility text-gradient-brand-strong {
+  background-image: linear-gradient(100deg, var(--color-gold-500), var(--color-brand-500) 50%, var(--color-gold-500));
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Animated white shimmer (for white text on dark surfaces; pair with `animate-gradient`). */
+@utility text-shimmer-white {
+  background-image: linear-gradient(100deg, rgb(255 255 255 / 0.5), #ffffff 50%, rgb(255 255 255 / 0.5));
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Animated ink shimmer (the light-surface counterpart of text-shimmer-white). */
+@utility text-shimmer-ink {
+  background-image: linear-gradient(
+    100deg,
+    color-mix(in oklab, var(--ink) 55%, transparent),
+    var(--ink) 50%,
+    color-mix(in oklab, var(--ink) 55%, transparent)
+  );
   background-size: 200% 100%;
   -webkit-background-clip: text;
   background-clip: text;

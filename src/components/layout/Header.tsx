@@ -150,7 +150,22 @@ export function Header() {
           )}
         />
         <div className="container-page flex h-[4.25rem] items-center gap-3 sm:h-[4.5rem]">
-          <Logo onDark={onDark || theme === 'dark'} className="mr-auto shrink-0 xl:mr-2" />
+          {/* Brand identity: AIT logo (primary) + full name. */}
+          <div className="mr-auto flex shrink-0 items-center xl:mr-2">
+            <Logo onDark={onDark || theme === 'dark'} />
+            <span
+              className={cn(
+                'ml-3 hidden border-l pl-3 text-[0.8rem] font-semibold uppercase leading-[1.15] tracking-[0.04em] xl:inline-block',
+                onDark || theme === 'dark' ? 'border-white/25' : 'border-line-strong/50',
+              )}
+            >
+              <span className={cn('animate-gradient', onDark ? 'text-shimmer-white' : 'text-shimmer-ink')}>
+                Australian Institute
+                <br />
+                of Technology
+              </span>
+            </span>
+          </div>
           <div className="hidden min-w-0 flex-1 justify-center px-2 xl:flex">
             <DesktopNav items={navigation.main} onDark={onDark} value={menuValue} onValueChange={setMenuValue} />
           </div>
@@ -158,17 +173,8 @@ export function Header() {
             {/* Compact search for mobile/tablet, and on desktop once the search bar in the top strip scrolls away. */}
             <SearchTrigger variant="icon" onDark={onDark} className={cn(!scrolled && 'xl:hidden')} />
             <ThemeToggle onDark={onDark} />
-            {/* Enquire only where the main nav is hidden (lg); at xl+ the nav fills the row, so keep just Apply. */}
-            <ButtonLink
-              href="/enquire"
-              size="sm"
-              variant={onDark ? 'inverse-ghost' : 'ghost'}
-              className="ml-1 hidden lg:inline-flex xl:hidden"
-            >
-              Enquire
-            </ButtonLink>
-            <ButtonLink href="/apply" size="sm" variant="accent" className="ml-1 hidden sm:inline-flex">
-              Apply now
+            <ButtonLink href="/enquire" size="sm" variant="accent" className="ml-1 hidden sm:inline-flex">
+              Enquire Now
             </ButtonLink>
             <MobileNav onDark={onDark} />
           </div>

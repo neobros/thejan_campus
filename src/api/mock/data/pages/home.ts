@@ -97,7 +97,7 @@ export const homePage: Page = {
       columns: 4,
       eyebrow: 'Why choose AIT?',
       heading: 'International Learning, Closer to Home',
-      intro: 'Selected international programmes · Local access · Practical learning · Future possibilities.',
+      intro: 'Selected international programmes • Local access • Practical learning • Future possibilities.',
       items: [
         { icon: 'globe', title: 'International Education Opportunities', text: 'Explore selected programmes offered through our education partnerships.' },
         { icon: 'map-pin', title: 'Study Locally', text: 'Access available programmes in Sri Lanka without necessarily relocating overseas to study.' },
@@ -118,6 +118,16 @@ export const homePage: Page = {
         { title: 'Learn', text: 'Study in Sri Lanka through the arrangement specified for the programme.' },
         { title: 'Plan Ahead', text: 'Explore potential career or further-study options.' },
       ],
+    },
+    {
+      id: 'home-practical',
+      type: 'split',
+      eyebrow: 'Practical learning',
+      heading: 'Learn Skills You Can Put into Practice',
+      body: 'We believe education should help students build knowledge and develop skills they can apply in relevant settings. Our approach connects programme learning with practical activities and relevant industry contexts, according to the requirements of each course.',
+      image: media.home.why,
+      imageSide: 'right',
+      actions: [{ label: 'Explore courses', href: '/courses', variant: 'primary' }],
     },
     {
       id: 'home-campuses',

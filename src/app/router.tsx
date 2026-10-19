@@ -22,6 +22,7 @@ const contentPage = () => import('@/pages/ContentPage')
 
 /** CMS-driven pages (spec §4). Conditional pages 404 automatically when the CMS does not publish them. */
 const CONTENT_PATHS = [
+  'how-it-works',
   'about',
   'about/team',
   'about/accreditation',
