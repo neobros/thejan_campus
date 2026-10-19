@@ -5,7 +5,7 @@ import { ModuleSection } from '@/components/blocks/ModuleSection'
 import { moduleProp, type ModuleComponentProps } from '@/components/blocks/types'
 import { ButtonLink } from '@/components/ui/Button'
 import { CardGridSkeleton, EmptyState, ErrorPanel } from '@/components/ui/feedback'
-import { Stagger, StaggerItem } from '@/components/motion/Reveal'
+import { Reveal } from '@/components/motion/Reveal'
 import { CardCarouselTrack, useCardCarousel } from './carousel'
 import { CourseCard } from '@/components/shared/cards'
 import { coursesHref } from '@/lib/links'
@@ -38,13 +38,15 @@ export function FeaturedCoursesModule({ block, className }: ModuleComponentProps
       ) : courses.length === 0 ? (
         <EmptyState title="No courses to show yet" description="Please check back soon or browse the full catalogue." />
       ) : isGrid ? (
-        <Stagger as="ul" className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {courses.map((course) => (
-            <StaggerItem key={course.slug} as="li" className="h-full">
+        // Each card reveals on its own as it scrolls in — a single tall Stagger container
+        // can fail to trigger for a long grid, leaving every card stuck invisible.
+        <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {courses.map((course, i) => (
+            <Reveal key={course.slug} as="li" y={24} delay={(i % 3) * 0.08} className="h-full">
               <CourseCard course={course} audience={audience} />
-            </StaggerItem>
+            </Reveal>
           ))}
-        </Stagger>
+        </ul>
       ) : (
         <CardCarouselTrack carousel={carousel} label="Featured courses">
           {courses.map((course) => (
