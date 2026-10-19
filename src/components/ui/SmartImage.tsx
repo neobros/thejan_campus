@@ -125,6 +125,8 @@ export function SmartImage({ image, className, imgClassName, priority, sizes = '
 
   return (
     <div className={cn('relative overflow-hidden bg-surface-muted @container', className)}>
+      {/* Animated loading shimmer until the lazy image has decoded (avoids a flat colour block on scroll). */}
+      {!loaded && <div aria-hidden className="skeleton absolute inset-0" />}
       <img
         src={image.src}
         srcSet={image.srcSet}
