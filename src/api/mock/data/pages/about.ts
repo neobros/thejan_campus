@@ -1,5 +1,6 @@
 import type { Page } from '@/api/types'
 import { media } from '../media'
+import { educationPartners, vcConsultancyLead, vcConsultancyProviders } from '../partners'
 import { TODAY } from '../time'
 
 /**
@@ -158,9 +159,10 @@ export const aboutPage: Page = {
       id: 'about-recognition',
       type: 'module',
       module: 'partnerStrip',
-      eyebrow: 'Recognition',
-      heading: 'Registrations and partners',
-      intro: 'We list only registrations, accreditations and partnerships that have been verified. Full details are on our accreditation page.',
+      eyebrow: 'Education partners',
+      heading: 'Our Partners',
+      intro: 'We work with Australian and international education providers to deliver selected programmes locally in Sri Lanka.',
+      props: { partners: educationPartners },
     },
     {
       id: 'about-links',
@@ -170,7 +172,7 @@ export const aboutPage: Page = {
       heading: 'Explore more about AIT',
       items: [
         { icon: 'users', title: 'Leadership and faculty', text: 'Meet the people who lead, teach and support our students.', href: '/about/team' },
-        { icon: 'badge-check', title: 'Accreditation and partners', text: 'Verified registrations, accreditations and partnerships.', href: '/about/accreditation' },
+        { icon: 'badge-check', title: 'Our partners', text: 'The Australian and international education providers we work with.', href: '/partners' },
         { icon: 'building', title: 'Our campuses', text: 'Locations, facilities, opening hours and directions.', href: '/campuses' },
         { icon: 'sparkles', title: 'Student life', text: 'Activities, events and community on campus.', href: '/student-life' },
       ],
@@ -256,51 +258,36 @@ export const teamPage: Page = {
 
 export const accreditationPage: Page = {
   id: 'page-about-accreditation',
-  slug: 'about/accreditation',
-  title: 'Accreditation and partners',
-  eyebrow: 'About us',
-  summary: 'Verified registrations, accreditations and partnerships — and a plain explanation of what each type of relationship means.',
+  slug: 'partners',
+  title: 'Our Partners',
+  eyebrow: 'Partners',
+  summary: 'The Australian and international education providers we work with to bring selected programmes to students in Sri Lanka.',
   hero: { image: media.pageExtra.accreditation },
   blocks: [
     {
       id: 'accreditation-intro',
       type: 'intro',
-      lead: 'We publish only the registrations, accreditations and partnerships that have been verified for AIT, so you can see exactly what each one covers.',
-      body: 'Each listing shows the type of relationship, a short description, any official identifier, the dates it applies and — where one exists — a link to the official public record.',
+      lead: 'We work with established Australian and international education providers to offer selected programmes locally in Sri Lanka.',
+      body: 'Each partner brings its own programmes and expertise. Visit a partner’s website to learn more about the organisation behind the courses we help you access.',
     },
     {
-      id: 'accreditation-types',
-      type: 'table',
-      background: 'alt',
-      eyebrow: 'Understanding the difference',
-      heading: 'Types of recognition and partnership',
-      intro: 'Different relationships mean different things. This table explains what each type covers, and what it does not.',
-      columns: ['Relationship', 'What it means', 'What it does not mean'],
-      rows: [
-        ['Registration', 'Approval from an authorised body to operate as an education provider, where the jurisdiction requires it.', 'It does not, on its own, accredit every course.'],
-        ['Accreditation', 'Formal recognition of a specific course or qualification by an authorised body.', 'It applies only to the courses named in the accreditation.'],
-        ['Awarding body', 'The organisation that issues the qualification when a student completes a course.', 'It does not mean the awarding body teaches the course.'],
-        ['Teaching partnership', 'An agreement with another organisation to deliver or support part of a course or activity.', 'It is not an accreditation and does not change who awards the qualification.'],
-        ['Membership', 'Membership of a professional or industry association.', 'It is not an endorsement or accreditation of our courses.'],
-      ],
-      caption: 'Relationship types used on this page',
-    },
-    {
-      id: 'accreditation-list',
+      id: 'partners-list',
       type: 'module',
-      module: 'accreditations',
-      eyebrow: 'Our details',
-      heading: 'Registrations, accreditations and partners',
-      intro: 'Details are added once verified. Country-specific identifiers appear only where they apply to AIT.',
+      module: 'partnerStrip',
+      background: 'alt',
+      eyebrow: 'Education partners',
+      heading: 'Our Partners',
+      intro: 'Select a partner to visit their official website.',
+      props: { partners: educationPartners },
     },
     {
-      id: 'accreditation-check',
-      type: 'callout',
-      background: 'alt',
-      tone: 'info',
-      title: 'Check our details for yourself',
-      body: 'Where an official public register exists, each listing links to it so you can confirm the details independently. If something on this page looks incorrect, or someone describes a relationship with AIT that is not listed here, please let us know at [COMPLIANCE_EMAIL].',
-      action: { label: 'Contact us', href: '/contact', variant: 'secondary' },
+      id: 'partners-vc',
+      type: 'module',
+      module: 'partnerStrip',
+      eyebrow: 'Our education network',
+      heading: 'VC Consultancy',
+      intro: 'Through VC Consultancy, students can access programmes from a network of Australian education providers.',
+      props: { lead: vcConsultancyLead, partners: vcConsultancyProviders, marquee: true },
     },
     {
       id: 'accreditation-links',
@@ -315,7 +302,7 @@ export const accreditationPage: Page = {
     },
   ],
   seo: {
-    description: 'Verified registrations, accreditations and partnerships for AIT, and what each type of relationship means.',
+    description: 'The Australian and international education providers AIT partners with to deliver selected programmes locally in Sri Lanka.',
   },
   updatedAt,
 }

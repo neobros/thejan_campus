@@ -3,29 +3,27 @@ import { cn } from '@/lib/cn'
 import { AppLink } from '@/components/ui/AppLink'
 
 /**
- * AIT logo (book + figure + wordmark), supplied by the client as a transparent PNG.
- * `onDark` swaps to the white wordmark version for the hero header, footer and dark theme.
- * Files: public/brand/logo*.png (colour and white, 800px + 400px). The 800 × 213 image is 3.76:1 —
- * the mark and wordmark are composed from the clean mark + "AIT" with deliberate breathing room.
+ * The full AIT crest (emblem + "Australian Institute of Technology" + tagline), supplied by the client.
+ * It sits on a white badge so the red/navy artwork and navy lettering keep full contrast in both the
+ * light and dark themes. Files: public/brand/crest-800.png (+ 1536 for retina).
  */
-export function LogoImage({ onDark, className }: { onDark?: boolean; className?: string }) {
-  const base = onDark ? '/brand/logo-white' : '/brand/logo'
+export function LogoImage({ className }: { className?: string }) {
   return (
     <img
-      src={`${base}-400.png`}
-      srcSet={`${base}-400.png 400w, ${base}.png 800w`}
-      sizes="(min-width: 640px) 176px, 150px"
+      src="/brand/crest-800.png"
+      srcSet="/brand/crest-800.png 800w, /brand/crest-1536.png 1536w"
+      sizes="(min-width: 640px) 142px, 112px"
       width={800}
-      height={213}
+      height={515}
       alt=""
       decoding="async"
-      className={cn('h-9 w-auto select-none sm:h-[2.9rem]', className)}
+      className={cn('h-14 w-auto select-none sm:h-[4.5rem]', className)}
       draggable={false}
     />
   )
 }
 
-export function Logo({ onDark, className }: { onDark?: boolean; className?: string }) {
+export function Logo({ className }: { className?: string }) {
   const settings = useSettings()
   return (
     <AppLink
@@ -33,10 +31,9 @@ export function Logo({ onDark, className }: { onDark?: boolean; className?: stri
       className={cn('group flex min-w-0 items-center rounded-xl', className)}
       aria-label={`${settings.name} — home`}
     >
-      <LogoImage
-        onDark={onDark}
-        className="transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03]"
-      />
+      <span className="inline-flex items-center rounded-xl bg-white px-2 py-1 shadow-sm ring-1 ring-black/5 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03]">
+        <LogoImage />
+      </span>
     </AppLink>
   )
 }

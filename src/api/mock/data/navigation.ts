@@ -39,7 +39,7 @@ export const navigation: Navigation = {
       },
     },
     { label: 'How It Works', href: '/how-it-works' },
-    { label: 'Partners', href: '/about/accreditation' },
+    { label: 'Partners', href: '/partners' },
     { label: 'Contact', href: '/contact' },
   ],
   utility: [
@@ -74,7 +74,7 @@ export const navigation: Navigation = {
       links: [
         { label: 'About us', href: '/about' },
         { label: 'Leadership & faculty', href: '/about/team' },
-        { label: 'Accreditation & partners', href: '/about/accreditation' },
+        { label: 'Our partners', href: '/partners' },
         { label: 'Campuses', href: '/campuses' },
         { label: 'News', href: '/news' },
         { label: 'Events', href: '/events' },
