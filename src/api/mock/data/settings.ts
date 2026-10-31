@@ -7,7 +7,7 @@ import type { InstitutionSettings } from '@/api/types'
 export const settings: InstitutionSettings = {
   name: 'AIT',
   shortName: 'AIT',
-  legalName: '[LEGAL_ENTITY_NAME]',
+  legalName: 'Australian Institute of Technology',
   tradingName: null,
   tagline: 'Australian skills. Local opportunity. A wider future.',
   description:
@@ -17,8 +17,8 @@ export const settings: InstitutionSettings = {
   currency: 'AUD',
   locale: 'en-AU',
   contact: {
-    phone: '[PHONE_NUMBER]',
-    email: '[ADMISSIONS_EMAIL]',
+    phone: '076 700 25 25',
+    email: 'info@aitcampus.com',
     address: '[STREET_ADDRESS], Colombo 14, Sri Lanka',
     hours: 'Monday to Friday, [OPENING_HOURS]',
   },

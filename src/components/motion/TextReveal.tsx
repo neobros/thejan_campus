@@ -46,10 +46,10 @@ export function TextReveal({
     <Tag id={id} className={className}>
       {tokens.map((token, index) => (
         <Fragment key={index}>
-          <span className="inline-block overflow-hidden pb-[0.14em] -mb-[0.14em] align-bottom">
+          <span className="inline-block overflow-hidden pb-[0.3em] -mb-[0.3em] align-bottom">
             <motion.span
               className={cn('inline-block will-change-transform', token.emphasis && emphasisClassName)}
-              initial={{ y: '105%', rotate: 3, opacity: 0 }}
+              initial={{ y: '134%', rotate: 3, opacity: 0 }}
               animate={{ y: '0%', rotate: 0, opacity: 1 }}
               transition={{ duration: 0.9, ease: EASE_OUT_EXPO, delay: delay + index * stagger }}
             >
