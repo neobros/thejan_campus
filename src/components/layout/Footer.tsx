@@ -6,7 +6,6 @@ import { AppLink } from '@/components/ui/AppLink'
 import { SocialIcon, socialLabel } from '@/components/ui/SocialIcon'
 import { Aurora } from '@/components/motion/effects'
 import { Reveal } from '@/components/motion/Reveal'
-import { Logo } from './Logo'
 import { ThemeSwitcher } from './ThemeToggle'
 
 export function Footer() {
@@ -23,7 +22,23 @@ export function Footer() {
       <div className="container-page relative pb-10 pt-16 sm:pt-20">
         <div className="grid gap-12 lg:grid-cols-12">
           <Reveal className="lg:col-span-4">
-            <Logo onDark />
+            <AppLink
+              href="/"
+              aria-label={`${settings.name} — home`}
+              className="inline-flex rounded-xl bg-white px-4 py-3 shadow-sm ring-1 ring-black/5"
+            >
+              <img
+                src="/brand/logo-landscape-640.png"
+                srcSet="/brand/logo-landscape-640.png 640w, /brand/logo-landscape-1280.png 1280w"
+                sizes="(min-width: 640px) 288px, 240px"
+                width={1280}
+                height={228}
+                alt=""
+                decoding="async"
+                className="h-auto w-[15rem] select-none sm:w-72"
+                draggable={false}
+              />
+            </AppLink>
             <p className="mt-5 max-w-sm leading-relaxed text-ink-muted">{settings.tagline}</p>
             <ul className="mt-6 space-y-3 text-[0.9375rem] text-ink-muted">
               <li className="flex gap-3">

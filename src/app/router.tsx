@@ -25,7 +25,7 @@ const CONTENT_PATHS = [
   'how-it-works',
   'about',
   'about/team',
-  'about/accreditation',
+  'partners',
   'admissions',
   'admissions/entry-requirements',
   'admissions/fees',

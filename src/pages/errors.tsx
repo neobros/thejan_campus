@@ -72,14 +72,10 @@ export function BootScreen() {
   return (
     <div className="grid min-h-svh place-items-center bg-canvas" role="status" aria-live="polite">
       <span className="sr-only">Loading…</span>
-      <div className="flex flex-col items-center gap-7 px-6 text-center">
-        <div className="animate-float">
-          <img src="/brand/logo-400.png" alt="" width={800} height={213} className="h-11 w-auto dark:hidden" />
-          <img src="/brand/logo-white-400.png" alt="" width={800} height={213} className="hidden h-11 w-auto dark:block" />
+      <div className="flex flex-col items-center gap-8 px-6 text-center">
+        <div className="animate-float rounded-2xl bg-white p-5 shadow-lg ring-1 ring-black/5 sm:p-6">
+          <img src="/brand/crest-800.png" alt="" width={800} height={515} className="h-24 w-auto sm:h-28" />
         </div>
-        <p className="animate-gradient text-shimmer-ink text-[0.72rem] font-semibold uppercase tracking-[0.3em] dark:text-shimmer-white">
-          Australian Institute of Technology
-        </p>
         <div className="relative h-1 w-44 overflow-hidden rounded-full bg-line">
           <span className="animate-loader absolute inset-y-0 left-0 w-1/3 rounded-full bg-gradient-to-r from-gold-500 to-brand-500" />
         </div>
