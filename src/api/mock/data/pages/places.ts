@@ -137,8 +137,8 @@ export const contactPage: Page = {
       type: 'intro',
       lead: 'We are happy to help. Choose the team that best matches your question, visit one of our campuses, or send us an enquiry.',
       highlights: [
-        { label: '[PHONE_NUMBER]', value: 'Call us', icon: 'phone' },
-        { label: '[ADMISSIONS_EMAIL]', value: 'Email us', icon: 'mail' },
+        { label: '076 700 25 25', value: 'Call us', icon: 'phone' },
+        { label: 'info@aitcampus.com', value: 'Email us', icon: 'mail' },
         { label: 'Monday to Friday, [OPENING_HOURS]', value: 'Opening hours', icon: 'clock' },
         { label: '[STREET_ADDRESS], [CITY] [POSTCODE]', value: 'Visit us', icon: 'map-pin' },
       ],

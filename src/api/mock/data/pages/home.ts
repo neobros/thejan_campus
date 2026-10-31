@@ -1,5 +1,6 @@
 import type { Page } from '@/api/types'
 import { media } from '../media'
+import { educationPartners, vcConsultancyLead, vcConsultancyProviders } from '../partners'
 import { TODAY } from '../time'
 
 /** DEMO DATA — home page (specification §5.1). Section order follows the brief. */
@@ -165,8 +166,19 @@ export const homePage: Page = {
       type: 'module',
       module: 'partnerStrip',
       eyebrow: 'Education partners',
-      heading: 'Connecting Students with International Education',
+      heading: 'Our Partners',
       intro: 'We work with Australian and international education providers. Each partner’s role — delivery, awarding or oversight — is identified for the relevant programmes.',
+      props: { partners: educationPartners },
+    },
+    {
+      id: 'home-partners-vc',
+      type: 'module',
+      module: 'partnerStrip',
+      background: 'alt',
+      eyebrow: 'Our education network',
+      heading: 'VC Consultancy',
+      intro: 'Through VC Consultancy, students can access programmes from a network of Australian education providers.',
+      props: { lead: vcConsultancyLead, partners: vcConsultancyProviders, marquee: true },
     },
     {
       id: 'home-news',

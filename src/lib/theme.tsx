@@ -24,7 +24,7 @@ const systemQuery = () => window.matchMedia('(prefers-color-scheme: dark)')
 function readPreference(): ThemePreference {
   const stored = readString(STORAGE_KEY)
   if (stored === 'light' || stored === 'dark' || stored === 'system') return stored
-  return 'dark' // default theme for first-time visitors
+  return 'light' // default theme for first-time visitors
 }
 
 function applyTheme(theme: Theme) {
@@ -54,7 +54,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
 
   const setPreference = useCallback(
     (next: ThemePreference, origin?: { x: number; y: number }) => {
-      // Store 'system' explicitly too, so an unset preference can default to dark for new visitors.
+      // Store 'system' explicitly too, so an unset preference can default to light for new visitors.
       writeString(STORAGE_KEY, next)
 
       const nextTheme: Theme = next === 'system' ? (systemQuery().matches ? 'dark' : 'light') : next

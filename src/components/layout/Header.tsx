@@ -149,13 +149,13 @@ export function Header() {
             solid ? 'border-b border-line bg-canvas/85 shadow-[0_8px_30px_-18px_rgb(0_0_0/0.25)] backdrop-blur-xl backdrop-saturate-150' : 'border-b border-transparent',
           )}
         />
-        <div className="container-page flex h-[4.25rem] items-center gap-3 sm:h-[4.5rem]">
-          {/* Brand identity: AIT logo (primary) + full name. */}
+        <div className="container-page flex h-[4.75rem] items-center gap-3 sm:h-[5.5rem]">
+          {/* Brand identity: the full AIT crest + the animated wordmark beside it. */}
           <div className="mr-auto flex shrink-0 items-center xl:mr-2">
-            <Logo onDark={onDark || theme === 'dark'} />
+            <Logo />
             <span
               className={cn(
-                'ml-3 hidden border-l pl-3 text-[0.8rem] font-semibold uppercase leading-[1.15] tracking-[0.04em] xl:inline-block',
+                'ml-3 hidden border-l pl-3 text-[0.8rem] font-semibold uppercase leading-[1.15] tracking-[0.04em] lg:inline-block',
                 onDark || theme === 'dark' ? 'border-white/25' : 'border-line-strong/50',
               )}
             >
