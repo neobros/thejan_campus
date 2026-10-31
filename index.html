@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <link rel="icon" type="image/png" sizes="64x64" href="/brand/favicon-64.png" />
     <link rel="icon" type="image/png" sizes="512x512" href="/brand/favicon-512.png" />
     <link rel="apple-touch-icon" href="/brand/apple-touch-icon.png" />
-    <meta name="theme-color" content="#070b14" />
+    <meta name="theme-color" content="#faf9f6" />
 
     <!-- Static fallbacks for crawlers that do not run JavaScript. Removed on boot; pages render their own metadata. -->
     <title data-static-head>AIT</title>
@@ -18,10 +18,10 @@
     <meta data-static-head name="twitter:card" content="summary_large_image" />
 
     <script>
-      // Apply the saved colour theme before first paint to avoid a flash. Default is dark; a saved
+      // Apply the saved colour theme before first paint to avoid a flash. Default is light; a saved
       // 'system' preference follows the OS, and an explicit 'light'/'dark' wins.
       ;(function () {
-        var theme = 'dark'
+        var theme = 'light'
         try {
           var saved = localStorage.getItem('campus-theme')
           if (saved === 'light' || saved === 'dark') theme = saved

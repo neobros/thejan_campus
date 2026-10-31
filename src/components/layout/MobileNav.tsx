@@ -6,7 +6,6 @@ import { useLocation } from 'react-router'
 import { useNavigationData, useSettings } from '@/api/queries'
 import { cn } from '@/lib/cn'
 import { isDialable, isEmail, telHref } from '@/lib/links'
-import { useTheme } from '@/lib/theme'
 import { AppLink } from '@/components/ui/AppLink'
 import { ButtonLink } from '@/components/ui/Button'
 import { Icon } from '@/components/ui/Icon'
@@ -18,7 +17,6 @@ export function MobileNav({ onDark }: { onDark?: boolean }) {
   const { pathname, search } = useLocation()
   const navigation = useNavigationData()
   const settings = useSettings()
-  const { theme } = useTheme()
 
   // Close after navigating.
   useEffect(() => setOpen(false), [pathname, search])
@@ -58,7 +56,7 @@ export function MobileNav({ onDark }: { onDark?: boolean }) {
               >
                 <Dialog.Title className="sr-only">Site menu</Dialog.Title>
                 <div className="flex items-center justify-between gap-4 border-b border-line px-5 py-4">
-                  <Logo onDark={theme === 'dark'} />
+                  <Logo />
                   <Dialog.Close className="grid size-10 place-items-center rounded-full text-ink hover:bg-surface-muted" aria-label="Close menu">
                     <X aria-hidden className="size-5" />
                   </Dialog.Close>
