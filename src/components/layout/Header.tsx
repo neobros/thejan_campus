@@ -13,7 +13,7 @@ import { SearchProvider, SearchTrigger } from './SearchDialog'
 import { ThemeToggle } from './ThemeToggle'
 
 /** Routes whose hero is a dark, full-bleed image — the header starts transparent with light text. */
-const DARK_HERO_ROUTES = new Set(['/'])
+const DARK_HERO_ROUTES = new Set(['/', '/about'])
 
 function useScrollState(locked: boolean) {
   const [state, setState] = useState({ scrolled: false, hidden: false })

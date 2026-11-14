@@ -23,7 +23,6 @@ const contentPage = () => import('@/pages/ContentPage')
 /** CMS-driven pages (spec §4). Conditional pages 404 automatically when the CMS does not publish them. */
 const CONTENT_PATHS = [
   'how-it-works',
-  'about',
   'about/team',
   'partners',
   'admissions',
@@ -75,6 +74,7 @@ export const router = createBrowserRouter([
         ErrorBoundary: RouteErrorBoundary,
         children: [
           { index: true, ...page(() => import('@/pages/HomePage')) },
+          { path: 'about', ...page(() => import('@/pages/AboutPage')) },
           ...CONTENT_PATHS.map((path) => ({ path, ...page(contentPage) })),
           { path: 'courses', ...page(() => import('@/pages/courses/CoursesPage')) },
           { path: 'courses/category/:slug', ...page(() => import('@/pages/courses/CourseCategoryPage')) },
