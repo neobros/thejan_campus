@@ -544,5 +544,65 @@ export const providedImages: Record<string, ProvidedImage> = {
     "width": 1600,
     "height": 1200,
     "concept": true
+  },
+  "ait-about-hero": {
+    "src": "/images/ait-about-hero-1800.webp",
+    "srcSet": "/images/ait-about-hero-640.webp 640w, /images/ait-about-hero-1024.webp 1024w, /images/ait-about-hero-1600.webp 1600w, /images/ait-about-hero-1800.webp 1800w",
+    "width": 1800,
+    "height": 1200
+  },
+  "ait-hero": {
+    "src": "/images/ait-hero-1600.webp",
+    "srcSet": "/images/ait-hero-640.webp 640w, /images/ait-hero-1024.webp 1024w, /images/ait-hero-1600.webp 1600w",
+    "width": 1600,
+    "height": 1100
+  },
+  "ait-partnered-beauty": {
+    "src": "/images/ait-partnered-beauty-1200.webp",
+    "srcSet": "/images/ait-partnered-beauty-640.webp 640w, /images/ait-partnered-beauty-1024.webp 1024w, /images/ait-partnered-beauty-1200.webp 1200w",
+    "width": 1200,
+    "height": 760
+  },
+  "ait-partnered-community": {
+    "src": "/images/ait-partnered-community-1200.webp",
+    "srcSet": "/images/ait-partnered-community-640.webp 640w, /images/ait-partnered-community-1024.webp 1024w, /images/ait-partnered-community-1200.webp 1200w",
+    "width": 1200,
+    "height": 760
+  },
+  "ait-partnered-hospitality": {
+    "src": "/images/ait-partnered-hospitality-1200.webp",
+    "srcSet": "/images/ait-partnered-hospitality-640.webp 640w, /images/ait-partnered-hospitality-1024.webp 1024w, /images/ait-partnered-hospitality-1200.webp 1200w",
+    "width": 1200,
+    "height": 760
+  },
+  "ait-prog-construction": {
+    "src": "/images/ait-prog-construction-1200.webp",
+    "srcSet": "/images/ait-prog-construction-640.webp 640w, /images/ait-prog-construction-1024.webp 1024w, /images/ait-prog-construction-1200.webp 1200w",
+    "width": 1200,
+    "height": 760
+  },
+  "ait-prog-nursing": {
+    "src": "/images/ait-prog-nursing-1200.webp",
+    "srcSet": "/images/ait-prog-nursing-640.webp 640w, /images/ait-prog-nursing-1024.webp 1024w, /images/ait-prog-nursing-1200.webp 1200w",
+    "width": 1200,
+    "height": 760
+  },
+  "ait-skyline": {
+    "src": "/images/ait-skyline-2400.webp",
+    "srcSet": "/images/ait-skyline-640.webp 640w, /images/ait-skyline-1024.webp 1024w, /images/ait-skyline-1600.webp 1600w, /images/ait-skyline-2400.webp 2400w",
+    "width": 2400,
+    "height": 800
+  },
+  "ait-story": {
+    "src": "/images/ait-story-1600.webp",
+    "srcSet": "/images/ait-story-640.webp 640w, /images/ait-story-1024.webp 1024w, /images/ait-story-1600.webp 1600w",
+    "width": 1600,
+    "height": 1200
+  },
+  "ait-tne": {
+    "src": "/images/ait-tne-1600.webp",
+    "srcSet": "/images/ait-tne-640.webp 640w, /images/ait-tne-1024.webp 1024w, /images/ait-tne-1600.webp 1600w",
+    "width": 1600,
+    "height": 1100
   }
 }

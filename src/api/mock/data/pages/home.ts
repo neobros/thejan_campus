@@ -1,218 +1,229 @@
 import type { Page } from '@/api/types'
 import { media } from '../media'
-import { educationPartners, vcConsultancyLead, vcConsultancyProviders } from '../partners'
+import { educationPartners, srilankanDeliveryPartners, vcConsultancyProviders } from '../partners'
 import { TODAY } from '../time'
 
-/** DEMO DATA — home page (specification §5.1). Section order follows the brief. */
+/**
+ * DEMO DATA — home page. Section order and copy follow the client Homepage Content & Developer Brief
+ * (Australian Institute of Technology – Sri Lanka). Transnational-education framing throughout;
+ * qualified claims only — no implication that AIT itself awards partner qualifications.
+ */
 export const homePage: Page = {
-  id: 'page-home',
   slug: 'home',
+  id: 'page-home',
   // *Asterisks* mark the words that get the animated accent style in the hero headline.
-  title: 'Australian Skills. Local Opportunity. *A Wider Future.*',
-  eyebrow: 'Australian Institute of Technology',
+  title: 'Australian Skills. Global Opportunities. *A Brighter Future.*',
+  eyebrow: 'Australian Institute of Technology — Sri Lanka',
   summary:
-    'Explore international education and vocational training opportunities in Sri Lanka through selected programmes offered in collaboration with Australian education providers.',
+    'Bring your ambitions closer to home. AIT connects Sri Lankan learners with selected Australian education programmes and international training opportunities through academic partnerships and local delivery.',
   hero: {
-    image: media.banners.nursing,
+    image: media.ait.hero,
     interval: 7000,
-    // Rotating banners. Copy follows the client brief: transnational education framing, qualified claims, no visa/migration/job promises.
     slides: [
       {
-        image: media.banners.nursing,
-        eyebrow: 'Australian Institute of Technology',
-        title: 'Australian Skills. Local Opportunity. *A Wider Future.*',
+        image: media.ait.hero,
+        eyebrow: 'Australian Institute of Technology — Sri Lanka',
+        title: 'Australian Skills. Global Opportunities. *A Brighter Future.*',
         summary:
-          'Explore international education and vocational training opportunities in Sri Lanka through selected programmes offered in collaboration with Australian education providers. Develop your knowledge, build practical skills and explore new possibilities for your future.',
+          'Bring your ambitions closer to home. AIT connects Sri Lankan learners with selected Australian education programmes and international training opportunities through academic partnerships and local delivery — from construction and advanced nursing to specialised vocational fields.',
         actions: [
-          { label: 'Explore Courses', href: '/courses', variant: 'accent' },
-          { label: 'Enquire Now', href: '/enquire', variant: 'secondary' },
-        ],
-      },
-      {
-        image: media.banners.practical,
-        eyebrow: 'International education',
-        title: 'International learning, *closer to home*',
-        summary: 'Explore selected international programmes offered through our education partnerships and delivered locally in Sri Lanka.',
-        actions: [
-          { label: 'Explore Courses', href: '/courses', variant: 'accent' },
-          { label: 'Enquire Now', href: '/enquire', variant: 'secondary' },
-        ],
-      },
-      {
-        image: media.banners.support,
-        eyebrow: 'Study locally',
-        title: 'Study locally, *think globally*',
-        summary: 'Access available programmes in Sri Lanka without necessarily relocating overseas to study.',
-        actions: [
-          { label: 'Explore Courses', href: '/courses', variant: 'accent' },
-          { label: 'Enquire Now', href: '/enquire', variant: 'secondary' },
-        ],
-      },
-      {
-        image: media.banners.graduation,
-        eyebrow: 'Practical skills',
-        title: 'Build *practical, relevant* skills',
-        summary: 'Develop relevant technical and vocational skills through the practical components included in each programme.',
-        actions: [
-          { label: 'Explore Courses', href: '/courses', variant: 'accent' },
-          { label: 'Enquire Now', href: '/enquire', variant: 'secondary' },
+          { label: 'Find Your Path', href: '#home-find-path', variant: 'accent' },
+          { label: 'Discover AIT', href: '/about', variant: 'secondary' },
         ],
       },
       {
         image: media.banners.australia,
-        eyebrow: 'A wider future',
-        title: 'Open the door to *a wider future*',
-        summary: 'Build knowledge and skills that may support future career development and further study.',
+        eyebrow: 'Transnational education',
+        title: 'A world of education, *without crossing borders*',
+        summary:
+          'Through academic partnerships between institutions in different countries, selected international programmes can be delivered to learners right here in Sri Lanka.',
         actions: [
-          { label: 'Explore Courses', href: '/courses', variant: 'accent' },
-          { label: 'Enquire Now', href: '/enquire', variant: 'secondary' },
+          { label: 'Find Your Path', href: '#home-find-path', variant: 'accent' },
+          { label: 'Discover AIT', href: '/about', variant: 'secondary' },
+        ],
+      },
+      {
+        image: media.banners.practical,
+        eyebrow: 'Practical learning',
+        title: 'International perspectives, *practical skills*',
+        summary: 'Discover learning pathways that combine international perspectives with practical skills and prepare you for what comes next.',
+        actions: [
+          { label: 'Find Your Path', href: '#home-find-path', variant: 'accent' },
+          { label: 'Discover AIT', href: '/about', variant: 'secondary' },
         ],
       },
     ],
   },
   blocks: [
-    { id: 'home-search', type: 'module', module: 'courseSearch' },
+    // 02 | Find Your Path
     {
-      id: 'home-areas',
-      type: 'module',
-      module: 'categoryGrid',
-      eyebrow: 'Courses',
-      heading: 'Find Your Pathway',
-      intro:
-        'Explore confirmed programmes by subject area. Discover programmes designed to help you develop knowledge and skills in areas of interest, and find an option that aligns with your goals.',
-    },
-    {
-      id: 'home-featured',
-      type: 'module',
-      module: 'featuredCourses',
-      background: 'alt',
-      eyebrow: 'Courses',
-      heading: 'Courses to explore',
-      intro: 'Every course across our study areas. Compare duration, delivery and campuses at a glance.',
-      props: { layout: 'grid' },
-    },
-    {
-      id: 'home-why',
+      id: 'home-find-path',
       type: 'featureGrid',
-      variant: 'icons',
-      columns: 4,
-      eyebrow: 'Why choose AIT?',
-      heading: 'International Learning, Closer to Home',
-      intro: 'Selected international programmes • Local access • Practical learning • Future possibilities.',
+      variant: 'cards',
+      aside: true,
+      columns: 3,
+      eyebrow: 'Find Your Path',
+      heading: 'Your Goals. Your Pathway.',
+      intro: 'Tell us what you want to achieve. We’ll help you explore the learning options that may suit your goals.',
       items: [
-        { icon: 'globe', title: 'International Education Opportunities', text: 'Explore selected programmes offered through our education partnerships.' },
-        { icon: 'map-pin', title: 'Study Locally', text: 'Access available programmes in Sri Lanka without necessarily relocating overseas to study.' },
-        { icon: 'briefcase', title: 'Practical Skills Development', text: 'Develop relevant technical and vocational skills through the practical components included in each programme.' },
-        { icon: 'route', title: 'A Wider Future', text: 'Build knowledge and skills that may support future career development and further study.' },
+        { icon: 'graduation-cap', title: 'I’m a Student', text: 'Begin your education journey and build skills for the future.', href: '/enquire?topic=student' },
+        { icon: 'briefcase-business', title: 'I’m a Professional', text: 'Strengthen your expertise and explore your next career step.', href: '/enquire?topic=professional' },
+        { icon: 'users', title: 'I’m a Spouse / Partner', text: 'Develop your own skills and interests while supporting your partner’s international journey.', href: '/enquire?topic=spouse' },
       ],
     },
+    // 03 | Our Story
     {
-      id: 'home-steps',
-      type: 'steps',
-      background: 'alt',
-      eyebrow: 'How it works',
-      heading: 'International Programmes. Delivered Locally.',
-      intro: 'Explore → Understand the provider and qualification → Learn in Sri Lanka → Plan your next step.',
-      items: [
-        { title: 'Explore', text: 'Find a programme that matches your interests.' },
-        { title: 'Understand', text: 'Review the qualification, provider and entry requirements.' },
-        { title: 'Learn', text: 'Study in Sri Lanka through the arrangement specified for the programme.' },
-        { title: 'Plan Ahead', text: 'Explore potential career or further-study options.' },
-      ],
-    },
-    {
-      id: 'home-practical',
+      id: 'home-story',
       type: 'split',
-      eyebrow: 'Practical learning',
-      heading: 'Learn Skills You Can Put into Practice',
-      body: 'We believe education should help students build knowledge and develop skills they can apply in relevant settings. Our approach connects programme learning with practical activities and relevant industry contexts, according to the requirements of each course.',
-      image: media.home.why,
-      imageSide: 'right',
-      actions: [{ label: 'Explore courses', href: '/courses', variant: 'primary' }],
-    },
-    {
-      id: 'home-campuses',
-      type: 'module',
-      module: 'campusList',
       background: 'alt',
-      eyebrow: 'Our campuses',
-      heading: 'Places to learn and connect',
-      intro: 'Each campus has its own facilities and study areas. Visit a campus page for directions, hours and contacts.',
-    },
-    {
-      id: 'home-support',
-      type: 'split',
-      eyebrow: 'Student support',
-      heading: 'Help is close by when you need it',
-      body: 'From study skills and language help to wellbeing and administrative questions, our support teams can point you in the right direction. Support is available to every enrolled student.',
-      image: media.home.support,
+      eyebrow: 'Our Story',
+      heading: 'From International Connections to a New Educational Vision.',
+      body: 'AIT’s story began long before the institution itself. Through years of connecting local students with Australian education providers, AusAsia built relationships, developed partnerships and gained first-hand experience of the changing international education landscape.\n\nThe growing potential of Transnational Education brought a new possibility into focus: what if international education, expertise and qualifications could reach learners in Sri Lanka, without every learning journey having to begin overseas?\n\nToday, AIT carries that vision forward — bringing international academic partnerships, local educational institutions and industry-relevant learning together to create opportunities for a wider future.',
+      image: media.ait.story,
       imageSide: 'left',
-      bullets: ['Academic and study skills help', 'Wellbeing and personal support', 'Accessibility and learning adjustments', 'Fees and administrative questions'],
-      actions: [
-        { label: 'Student support', href: '/student-support', variant: 'primary' },
-        { label: 'Student life', href: '/student-life', variant: 'ghost' },
+      actions: [{ label: 'Discover Our Story', href: '/about', variant: 'primary' }],
+    },
+    // 04 | Our Programmes
+    {
+      id: 'home-programs',
+      type: 'featureGrid',
+      variant: 'cards',
+      aside: true,
+      columns: 2,
+      eyebrow: 'Our Programmes',
+      heading: 'Focused Programmes. Practical Knowledge.',
+      intro: 'Explore AIT’s core programme offerings, designed to develop knowledge and skills in fields with clear professional relevance.',
+      items: [
+        {
+          icon: 'building',
+          title: 'Construction & Technical Studies',
+          text: 'With The Centre of Excellence. Build technical expertise for a global industry — painting & decorating, tiling, carpentry, building & construction and civil construction design.',
+          href: '/courses',
+          image: media.ait.construction,
+        },
+        {
+          icon: 'heart-pulse',
+          title: 'GCAN (Advanced Nursing)',
+          text: 'With the Institute of Health & Management (IHM). Advance your nursing knowledge and career — from Graduate Certificate through to Master of Nursing.',
+          href: '/courses',
+          image: media.ait.nursing,
+        },
       ],
     },
+    // 05 | Partnered Programmes
     {
-      id: 'home-testimonials',
-      type: 'module',
-      module: 'testimonials',
-      background: 'alt',
-      eyebrow: 'Student voices',
-      heading: 'In their own words',
+      id: 'home-partnered',
+      type: 'featureGrid',
+      variant: 'cards',
+      aside: true,
+      columns: 3,
+      eyebrow: 'Partnered Programmes',
+      heading: 'Explore More Fields. Discover More Possibilities.',
+      intro: 'Through collaboration with education and training partners, AIT connects learners with further programme options across practical and service-focused fields.',
+      items: [
+        { icon: 'chef-hat', title: 'Hospitality Management & Cookery', text: 'InSITE Campus + AIBT Australia. Commercial cookery, kitchen management and hospitality management, with package options.', href: '/courses', image: media.ait.hospitality },
+        { icon: 'hand-heart', title: 'Ageing, Disability Support & Community Services', text: 'First Friends Campus + AVTA, ESOFT and Reach Community College. Individual support, ageing support and community services.', href: '/courses', image: media.ait.community },
+        { icon: 'palette', title: 'Hair & Beauty', text: 'AEHB Academy + The Centre of Excellence Australia. Hairdressing, salon management and beauty therapy, with packages.', href: '/courses', image: media.ait.beauty },
+      ],
     },
+    // 06 | What is TNE?
+    {
+      id: 'home-tne',
+      type: 'split',
+      background: 'night',
+      eyebrow: 'What is TNE?',
+      heading: 'A World of Education. Without Having to Cross Borders.',
+      body: 'Transnational Education (TNE) enables you to access selected international education programmes through approved delivery arrangements in Sri Lanka.\n\nThrough academic partnerships between institutions in different countries, programmes are delivered to learners locally, while retaining the academic framework and qualification arrangements of the relevant overseas education provider.',
+      image: media.ait.tne,
+      imageSide: 'left',
+      actions: [{ label: 'Learn More', href: '/about', variant: 'primary' }],
+    },
+    // 07 | Your Learning Journey
+    {
+      id: 'home-journey',
+      type: 'steps',
+      variant: 'row',
+      eyebrow: 'Your Learning Journey',
+      heading: 'Your Learning Journey with AIT',
+      intro: 'Qualification completion is subject to meeting the awarding institution’s academic and assessment requirements.',
+      items: [
+        { icon: 'file-text', title: 'Choose Your Programme', text: 'Find the programme that matches your goals.' },
+        { icon: 'list-checks', title: 'Check Eligibility', text: 'Review the entry requirements.' },
+        { icon: 'notebook-pen', title: 'Apply with AIT', text: 'Apply with support from our team.' },
+        { icon: 'users', title: 'Study in Sri Lanka', text: 'Begin your studies locally.' },
+        { icon: 'graduation-cap', title: 'Complete Your Qualification', text: 'Finish and complete your qualification.' },
+      ],
+    },
+    // 08 | Qualification outcomes
+    {
+      id: 'home-outcomes',
+      type: 'featureGrid',
+      variant: 'panels',
+      aside: true,
+      columns: 4,
+      background: 'alt',
+      eyebrow: 'Qualification Outcomes',
+      heading: 'Where Can Your Qualification Take You?',
+      intro:
+        'Every TNE qualification opens new doors. Put your knowledge into practice, strengthen your professional capabilities and explore opportunities for career growth, further education and new directions. Let what you learn today shape what you can achieve tomorrow.',
+      items: [
+        { icon: 'trending-up', title: 'Career Progression', text: 'Build the knowledge and capabilities to move forward in your chosen profession.', tone: 'rose' },
+        { icon: 'book-open', title: 'Advanced Learning', text: 'Continue your education and pursue higher-level qualifications.', tone: 'blue' },
+        { icon: 'globe', title: 'Global Mobility', text: 'Explore opportunities to apply your skills across international markets.', tone: 'amber' },
+        { icon: 'award', title: 'Industry Recognition', text: 'Strengthen your professional profile with relevant knowledge and recognised qualifications.', tone: 'emerald' },
+      ],
+    },
+    // 09 | Vision, Mission & Values
+    {
+      id: 'home-vmv',
+      type: 'featureGrid',
+      variant: 'panels',
+      aside: true,
+      columns: 3,
+      heading: 'Our Vision, Mission & Values',
+      items: [
+        { icon: 'eye', title: 'Our Vision', text: 'To shape a world where education transcends borders, knowledge drives progress and opportunity knows no limits.', tone: 'rose' },
+        { icon: 'target', title: 'Our Mission', text: 'To connect learners with quality education, industry and global opportunities through trusted partnerships and innovative learning.', tone: 'blue' },
+        {
+          icon: 'sparkles',
+          title: 'Our Values',
+          text: 'Excellence · Collaboration · Innovation · Inclusivity & Opportunity · Industry Relevance.',
+          tone: 'amber',
+        },
+      ],
+    },
+    // 10 | Our Partners
     {
       id: 'home-partners',
       type: 'module',
       module: 'partnerStrip',
-      eyebrow: 'Education partners',
+      background: 'alt',
       heading: 'Our Partners',
-      intro: 'We work with Australian and international education providers. Each partner’s role — delivery, awarding or oversight — is identified for the relevant programmes.',
-      props: { partners: educationPartners },
+      intro: 'A trusted network of Australian academic partners and local delivery campuses, working together to create meaningful learning opportunities.',
+      props: {
+        groups: [
+          { label: 'Australian Academic Partners', pill: 'navy', partners: [...educationPartners, ...vcConsultancyProviders] },
+          { label: 'Sri Lankan Delivery Partners', pill: 'red', partners: srilankanDeliveryPartners },
+        ],
+      },
     },
-    {
-      id: 'home-partners-vc',
-      type: 'module',
-      module: 'partnerStrip',
-      background: 'alt',
-      eyebrow: 'Our education network',
-      heading: 'VC Consultancy',
-      intro: 'Through VC Consultancy, students can access programmes from a network of Australian education providers.',
-      props: { lead: vcConsultancyLead, partners: vcConsultancyProviders, marquee: true },
-    },
-    {
-      id: 'home-news',
-      type: 'module',
-      module: 'latestNews',
-      eyebrow: 'News',
-      heading: 'Latest from campus',
-      props: { limit: 3 },
-    },
-    {
-      id: 'home-events',
-      type: 'module',
-      module: 'upcomingEvents',
-      background: 'alt',
-      eyebrow: 'Events',
-      heading: 'Coming up',
-      props: { limit: 3 },
-    },
+    // 11 | Final enquiry banner
     {
       id: 'home-cta',
       type: 'cta',
-      eyebrow: 'Talk to us',
-      heading: 'Your Next Step Starts Here',
-      body: 'Ask us about available programmes, entry requirements and the next steps in your application.',
+      eyebrow: 'Ready to move forward?',
+      heading: 'Ready to Move Forward?',
+      body: 'Your next opportunity starts with a conversation. Explore AIT programmes and find the right pathway for your ambitions.',
       actions: [
         { label: 'Enquire Now', href: '/enquire', variant: 'accent' },
-        { label: 'Contact Our Team', href: '/contact', variant: 'secondary' },
+        { label: 'Speak to Our Team', href: '/contact', variant: 'secondary' },
       ],
     },
   ],
   seo: {
     title: undefined,
     description:
-      'Explore international education and vocational training opportunities in Sri Lanka through selected programmes offered in collaboration with Australian education providers.',
+      'AIT connects Sri Lankan learners with selected Australian education programmes and international training opportunities through academic partnerships and local delivery.',
   },
   updatedAt: TODAY.toISOString(),
 }

@@ -4,9 +4,10 @@
  */
 export interface EducationPartner {
   name: string
-  logo: string
-  width: number
-  height: number
+  /** Logo file; omitted for partners whose logo is not yet on record (the name is shown instead). */
+  logo?: string
+  width?: number
+  height?: number
   /** Partner's own website; omitted when no public URL is on record (the logo then shows without a link). */
   href?: string
 }
@@ -46,4 +47,13 @@ export const vcConsultancyProviders: EducationPartner[] = [
   { name: 'Pivot Education', logo: '/brand/partners/partner-pivot.png', width: 317, height: 200 },
   { name: 'Profound Learn', logo: '/brand/partners/partner-profound.png', width: 1001, height: 200 },
   { name: 'Reach Community College', logo: '/brand/partners/partner-reach.png', width: 195, height: 200 },
+]
+
+/** Sri Lankan delivery partners — local campuses/institutions that host delivery. Logos pending, so names are shown. */
+export const srilankanDeliveryPartners: EducationPartner[] = [
+  { name: 'InSITE', logo: '/brand/partners/partner-insite.png', width: 200, height: 200 },
+  { name: 'First Friends', logo: '/brand/partners/partner-first-friends.png', width: 272, height: 200 },
+  { name: 'ESOFT', logo: '/brand/partners/partner-esoft.png', width: 451, height: 200 },
+  { name: 'IIHS', logo: '/brand/partners/partner-iihs.png', width: 414, height: 200 },
+  { name: 'AEHBA' },
 ]
