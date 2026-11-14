@@ -1,0 +1,685 @@
+/* About AIT page — layout/positioning from the supplied design brief, typography at the site's
+   own scale and fonts (Inter body, Fraunces headings). Scoped to this page. */
+.aboutRoot {
+  --navy: #061452;
+  --red: #e50022;
+  --blue: #06467e;
+  --line: #d8dce7;
+  /* Same stacks as the home page (Inter body, Fraunces headings). */
+  font-family: 'Inter Variable', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  color: var(--navy);
+  line-height: 1.5;
+}
+.hero h1,
+.story h2,
+.sectionHeading,
+.card h3,
+.person h3,
+.commitment h2,
+.explore h2 {
+  font-family: 'Fraunces Variable', ui-serif, Georgia, Cambria, 'Times New Roman', serif;
+  font-weight: 600;
+}
+/* Section headings use the same colour as the home page (--ink), not the brand blue. */
+.story h2,
+.sectionHeading,
+.card h3 {
+  color: var(--ink);
+}
+/* Founder attribution — a brighter brand blue. */
+.person h3,
+.person p {
+  color: #0b4aa0;
+}
+
+.wrap {
+  width: min(1200px, calc(100% - 56px));
+  margin: auto;
+}
+
+.btn {
+  border: 1.5px solid var(--red);
+  border-radius: 12px;
+  padding: 12px 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: white;
+  color: var(--red);
+  font-weight: 700;
+  line-height: 1.2;
+}
+.btn:hover {
+  background: #fff1f3;
+}
+
+.hero {
+  background: #061452;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  color: white;
+  min-height: calc(var(--header-h, 72px) + 300px);
+  display: flex;
+  align-items: center;
+  padding-top: var(--header-h, 72px);
+}
+.hero:before {
+  content: '';
+  position: absolute;
+  z-index: -2;
+  inset: 0;
+  background: url('/images/ait-about-hero-1600.webp') center / cover no-repeat;
+}
+.hero:after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(90deg, rgba(6, 20, 82, 0.98) 0%, rgba(6, 20, 82, 0.96) 34%, rgba(6, 20, 82, 0.72) 58%, rgba(6, 20, 82, 0.42) 100%);
+}
+.hero .wrap {
+  padding-top: 35px;
+  padding-bottom: 65px;
+}
+.hero h1 {
+  font-size: clamp(2.5rem, 5.5vw, 3.75rem);
+  line-height: 1.05;
+  margin: 0 0 10px;
+  letter-spacing: -1.5px;
+}
+.hero h2 {
+  font-size: 1.375rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0 0 12px;
+  max-width: 480px;
+}
+.hero p {
+  font-size: 1.125rem;
+  max-width: 420px;
+  margin: 0;
+  color: #ffffffcc;
+}
+
+.jump {
+  position: relative;
+  margin-top: -31px;
+  z-index: 2;
+  background: white;
+  border: 1px solid #edf0f4;
+  box-shadow: 0 5px 13px #08225d24;
+  border-radius: 17px;
+  display: flex;
+  align-items: center;
+  padding: 17px 12px;
+}
+.jump a {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  border-right: 1px solid #c4cada;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  white-space: nowrap;
+  padding: 0 10px;
+  color: var(--navy);
+}
+.jump a:last-child {
+  border: 0;
+}
+
+.icon {
+  width: 32px;
+  height: 32px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
+}
+.jump .icon {
+  color: var(--red);
+}
+
+.section {
+  scroll-margin-top: 100px;
+}
+
+.story {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr 0.8fr;
+  gap: 24px;
+  padding-top: 55px;
+  align-items: end;
+  border-bottom: 1px solid var(--line);
+}
+.storyCopy {
+  padding-bottom: 38px;
+  position: relative;
+  z-index: 1;
+}
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--red);
+  font-size: 1.125rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin: 0 0 12px;
+  line-height: 1.1;
+}
+.slash {
+  width: 6px;
+  height: 24px;
+  transform: skew(-19deg);
+  background: var(--red);
+  display: inline-block;
+  flex-shrink: 0;
+}
+.story h2 {
+  font-size: clamp(1.875rem, 4vw, 2.75rem);
+  line-height: 1.1;
+  margin: 0 0 16px;
+}
+.story p {
+  margin: 0 0 14px;
+  font-size: 1rem;
+  line-height: 1.55;
+}
+.watch {
+  margin-top: 10px;
+  text-align: left;
+  padding: 10px 18px;
+  gap: 15px;
+  cursor: pointer;
+}
+.play {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--red);
+  color: white;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+.watch strong {
+  display: block;
+  font-size: 1.0625rem;
+}
+.watch small {
+  display: block;
+  color: var(--navy);
+  font-weight: 400;
+  font-size: 0.9375rem;
+}
+
+.portrait {
+  align-self: end;
+  min-width: 0;
+}
+.portrait img {
+  width: 100%;
+  display: block;
+}
+
+.quote {
+  align-self: center;
+  padding-bottom: 24px;
+}
+.quote blockquote {
+  font-size: 1.125rem;
+  line-height: 1.5;
+  font-style: italic;
+  margin: 0;
+  position: relative;
+  padding: 24px 0 26px 35px;
+}
+.quote blockquote:before,
+.quote blockquote:after {
+  color: var(--red);
+  font-family: Georgia, serif;
+  font-size: 80px;
+  line-height: 0.5;
+  position: absolute;
+  font-weight: bold;
+}
+.quote blockquote:before {
+  content: '\201C';
+  left: 0;
+  top: 40px;
+}
+.quote blockquote:after {
+  content: '\201D';
+  right: 0;
+  bottom: 3px;
+}
+.person {
+  border-top: 1px solid #8791b0;
+  padding-top: 17px;
+  margin-top: 8px;
+}
+.person h3 {
+  font-size: 1.25rem;
+  line-height: 1.2;
+  margin: 0 0 6px;
+  letter-spacing: -0.4px;
+}
+.person p {
+  font-size: 0.9375rem;
+  margin: 0;
+  line-height: 1.45;
+}
+
+.journey {
+  display: grid;
+  grid-template-columns: 280px 1fr 200px;
+  gap: 32px;
+  padding: 44px 0;
+  border-bottom: 1px solid var(--line);
+  align-items: center;
+}
+.sectionHeading {
+  font-size: clamp(1.875rem, 4vw, 2.75rem);
+  line-height: 1.1;
+  display: flex;
+  gap: 13px;
+  margin: 0;
+}
+.journey .sectionHeading {
+  border-right: 1px solid #a7b0c5;
+  min-height: 90px;
+  padding-right: 18px;
+  align-items: flex-start;
+}
+.journey p {
+  font-size: 1rem;
+  margin: 0;
+  line-height: 1.55;
+}
+.ausasia {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 18px 24px;
+  text-align: center;
+  justify-self: center;
+}
+.ausasia strong {
+  display: block;
+  font-size: 1.5rem;
+  letter-spacing: -0.5px;
+}
+.ausasia span {
+  display: block;
+  font-size: 0.6rem;
+  letter-spacing: 1.3px;
+  text-transform: uppercase;
+  color: #68729a;
+  margin-top: 4px;
+}
+
+.values {
+  padding: 44px 0;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 32px;
+}
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+.card {
+  border-radius: 16px;
+  padding: 24px;
+  min-height: 220px;
+}
+.card:nth-child(1) {
+  background: #fff0f1;
+}
+.card:nth-child(2) {
+  background: #e3efff;
+}
+.card:nth-child(3) {
+  background: #fff7e6;
+}
+.card .icon {
+  color: var(--red);
+  width: 40px;
+  height: 40px;
+}
+.card h3 {
+  font-size: 1.25rem;
+  margin: 14px 0 7px;
+  letter-spacing: -0.4px;
+}
+.card p,
+.card ul {
+  font-size: 0.9375rem;
+  margin: 0;
+  line-height: 1.55;
+}
+.card ul {
+  padding-left: 20px;
+}
+
+.commitment {
+  isolation: isolate;
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 30px;
+  align-items: center;
+  border-radius: 25px;
+  min-height: 205px;
+  padding: 36px 36px;
+  color: white;
+  background: linear-gradient(110deg, #00366b, #174e89 50%, #6574aa);
+}
+.commitment:before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background:
+    linear-gradient(100deg, #00366b 0%, rgba(0, 54, 107, 0.92) 30%, rgba(23, 78, 137, 0.6) 58%, rgba(101, 116, 170, 0.25) 100%),
+    url('/images/ait-skyline-2400.webp') center / cover no-repeat;
+}
+.commitment h2 {
+  font-size: clamp(1.6rem, 3vw, 2.25rem);
+  line-height: 1.1;
+  margin: 0 0 10px;
+  letter-spacing: -0.8px;
+}
+.commitment p {
+  font-size: 0.9375rem;
+  margin: 0;
+  line-height: 1.5;
+  color: #ffffffe6;
+}
+.pillars {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  align-items: stretch;
+}
+.pillar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border-left: 1px solid #ffffff9c;
+  padding: 2px 12px;
+  gap: 10px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+.pillar:first-child {
+  border-left: 0;
+}
+.pillar .icon {
+  width: 40px;
+  height: 40px;
+}
+
+.exploreWrap {
+  margin-top: 44px;
+  margin-bottom: 44px;
+}
+.explore {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: 24px;
+  padding: 32px 45px;
+  min-height: 164px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  background: #d40020;
+}
+.explore:before {
+  content: '';
+  position: absolute;
+  z-index: -2;
+  inset: 0;
+  background: url('/images/ait-skyline-2400.webp') center / cover no-repeat;
+}
+.explore:after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: linear-gradient(100deg, #e50022 0%, #cf001e 30%, rgba(176, 0, 40, 0.62) 60%, rgba(130, 8, 46, 0.2) 100%);
+}
+.explore h2 {
+  font-size: clamp(1.875rem, 4vw, 2.75rem);
+  line-height: 1.1;
+  letter-spacing: -0.8px;
+  margin: 0 0 8px;
+}
+.explore p {
+  margin: 0;
+  font-size: 1.125rem;
+  color: #ffffffe6;
+}
+.explore .btn {
+  white-space: nowrap;
+  min-width: 205px;
+}
+.explore .btn span {
+  font-size: 1.25rem;
+}
+
+@media (max-width: 1100px) {
+  .wrap {
+    width: calc(100% - 46px);
+  }
+  .jump a {
+    gap: 8px;
+    padding: 0 8px;
+  }
+  .jump .icon {
+    width: 28px;
+    height: 28px;
+  }
+  .story {
+    grid-template-columns: 1.25fr 1fr 0.76fr;
+    gap: 16px;
+    padding-top: 46px;
+  }
+  .journey,
+  .values {
+    grid-template-columns: 250px 1fr 180px;
+    gap: 28px;
+  }
+  .values {
+    grid-template-columns: 225px 1fr;
+  }
+  .card {
+    padding: 20px;
+    min-height: 185px;
+  }
+  .commitment {
+    padding: 30px;
+    gap: 20px;
+    min-height: 170px;
+  }
+  .pillar {
+    padding: 0 10px;
+  }
+  .explore {
+    padding: 28px 40px;
+    min-height: 145px;
+  }
+}
+@media (max-width: 850px) {
+  .jump {
+    overflow-x: auto;
+    justify-content: flex-start;
+  }
+  .jump a {
+    flex: none;
+    padding: 0 20px;
+    min-height: 32px;
+  }
+  .story {
+    grid-template-columns: 1.2fr 1fr;
+    align-items: center;
+  }
+  .storyCopy {
+    grid-column: 1;
+    grid-row: 1;
+    padding-bottom: 10px;
+  }
+  .portrait {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  .quote {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 28px;
+    padding: 0 15px 24px 10px;
+  }
+  .quote blockquote {
+    padding: 20px 0 20px 35px;
+  }
+  .person {
+    align-self: center;
+  }
+  .journey {
+    grid-template-columns: 200px 1fr;
+  }
+  .ausasia {
+    grid-column: 1;
+    justify-self: start;
+  }
+  .journey p {
+    grid-column: 2;
+    grid-row: 1 / 3;
+  }
+  .values {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .commitment {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+  .explore .btn {
+    min-width: auto;
+    padding: 12px 18px;
+  }
+}
+@media (max-width: 560px) {
+  .wrap {
+    width: calc(100% - 32px);
+  }
+  .hero {
+    align-items: flex-start;
+  }
+  .hero:before {
+    inset: 0;
+    background-position: 60% center;
+  }
+  .hero:after {
+    background: linear-gradient(90deg, rgba(6, 20, 82, 0.96), rgba(6, 20, 82, 0.86) 45%, rgba(6, 20, 82, 0.3));
+  }
+  .hero .wrap {
+    padding: 40px 0 65px;
+  }
+  .jump {
+    padding: 13px 0;
+    border-radius: 13px;
+  }
+  .jump a {
+    padding: 0 16px;
+  }
+  .story {
+    padding-top: 35px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    align-items: stretch;
+  }
+  .storyCopy {
+    padding-bottom: 0;
+  }
+  .portrait {
+    width: min(320px, 90%);
+    margin: 0 auto;
+    align-self: center;
+  }
+  .quote {
+    display: block;
+    padding: 10px 18px 30px 18px;
+  }
+  .journey {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 32px 0;
+  }
+  .journey .sectionHeading {
+    border: 0;
+    min-height: 0;
+  }
+  .journey p {
+    grid-column: auto;
+    grid-row: auto;
+  }
+  .ausasia {
+    justify-self: start;
+  }
+  .values {
+    padding: 32px 0;
+  }
+  .cards {
+    grid-template-columns: 1fr;
+  }
+  .card {
+    min-height: 0;
+    padding: 22px;
+  }
+  .commitment {
+    padding: 28px 23px;
+    border-radius: 20px;
+  }
+  .pillars {
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 24px;
+  }
+  .pillar {
+    padding: 0 7px;
+  }
+  .pillar:nth-child(4) {
+    border-left: 0;
+  }
+  .commitment:before {
+    background:
+      linear-gradient(175deg, rgba(0, 54, 107, 0.95) 40%, rgba(23, 78, 137, 0.72) 100%),
+      url('/images/ait-skyline-2400.webp') center / cover no-repeat;
+  }
+  .explore {
+    padding: 28px 25px;
+    display: block;
+    border-radius: 20px;
+  }
+  .explore .btn {
+    margin-top: 22px;
+  }
+  .explore:after {
+    background: linear-gradient(175deg, #e50022f2, #bc001ecc);
+  }
+}

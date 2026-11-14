@@ -20,6 +20,19 @@ export const media = {
     why: slot('home-why', 'Small group of students working together around a table in a bright classroom', 'gold', 'users'),
     support: slot('home-support', 'A student talking with a support adviser in a welcoming office', 'teal', 'life-buoy'),
   },
+  /** AIT mockup imagery (home + about). Prompts are in docs/HOMEPAGE_IMAGE_PROMPTS.md. */
+  ait: {
+    hero: slot('ait-hero', 'A confident construction worker in hi-vis and a hardhat, a nursing student in scrubs and a young professional standing together, with the Sydney Opera House and harbour behind them', 'brand', 'graduation-cap', 1600, 1300),
+    story: slot('ait-story', 'Exterior of the AIT building with the Australian Institute of Technology crest signage, framed by green trees in bright daylight', 'brand', 'landmark', 1600, 1200),
+    aboutHero: slot('ait-about-hero', 'Modern AIT campus building with the Australian Institute of Technology crest on the facade, green trees and blue sky', 'brand', 'landmark', 1800, 1200),
+    tne: slot('ait-tne', 'The Sydney Opera House and harbour skyline at dusk, calm water, warm city lights', 'sky', 'globe', 1600, 1100),
+    skyline: slot('ait-skyline', 'Wide Sydney harbour skyline silhouette at dusk — Opera House and Harbour Bridge against a deep blue sky', 'brand', 'building', 2400, 800),
+    construction: slot('ait-prog-construction', 'A construction trainee in hi-vis and hardhat on a bright building site with a crane behind, confident and professional', 'slate', 'building', 1200, 900),
+    nursing: slot('ait-prog-nursing', 'A nursing student in navy scrubs with a stethoscope in a clean clinical training room, warm and professional', 'brand', 'heart-pulse', 1200, 900),
+    hospitality: slot('ait-partnered-hospitality', 'A chef in whites plating a dish in a professional commercial kitchen', 'gold', 'chef-hat', 1200, 900),
+    community: slot('ait-partnered-community', 'A community support worker smiling with an older person in a bright, caring setting', 'rose', 'hand-heart', 1200, 900),
+    beauty: slot('ait-partnered-beauty', 'A hairdressing and beauty student working with a client in a modern salon', 'violet', 'palette', 1200, 900),
+  },
   /** Rotating home-page banners (16:9, headline space on the left). */
   banners: {
     nursing: slot('nursing-hero', 'Three nursing students in navy scrubs walking together through a bright corridor', 'brand', 'heart-pulse', 2400, 1350),

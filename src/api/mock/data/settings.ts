@@ -9,9 +9,9 @@ export const settings: InstitutionSettings = {
   shortName: 'AIT',
   legalName: 'Australian Institute of Technology',
   tradingName: null,
-  tagline: 'Australian skills. Local opportunity. A wider future.',
+  tagline: 'Global Education. Local Opportunities.',
   description:
-    'Explore international education and vocational training opportunities in Sri Lanka through selected programmes offered in collaboration with Australian education providers.',
+    'AIT connects Sri Lankan learners with selected Australian education programmes and international training opportunities through academic partnerships and local delivery.',
   country: 'Sri Lanka',
   timezone: 'Asia/Colombo',
   currency: 'AUD',

@@ -5,7 +5,6 @@ import { useNavigationData, useSettings } from '@/api/queries'
 import { cn } from '@/lib/cn'
 import { isDialable, isEmail, telHref } from '@/lib/links'
 import { useTheme } from '@/lib/theme'
-import { AppLink } from '@/components/ui/AppLink'
 import { ButtonLink } from '@/components/ui/Button'
 import { DesktopNav } from './DesktopNav'
 import { Logo } from './Logo'
@@ -14,7 +13,7 @@ import { SearchProvider, SearchTrigger } from './SearchDialog'
 import { ThemeToggle } from './ThemeToggle'
 
 /** Routes whose hero is a dark, full-bleed image — the header starts transparent with light text. */
-const DARK_HERO_ROUTES = new Set(['/'])
+const DARK_HERO_ROUTES = new Set(['/', '/about'])
 
 function useScrollState(locked: boolean) {
   const [state, setState] = useState({ scrolled: false, hidden: false })
@@ -91,6 +90,7 @@ export function Header() {
       className="site-header no-print fixed inset-x-0 top-0 z-50 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]"
       style={{ transform: `translateY(${offset})` }}
     >
+      {/* Top contact strip (desktop) — phone + email only. */}
       <div ref={topRef}>
         <div
           className={cn(
@@ -98,45 +98,29 @@ export function Header() {
             onDark ? 'border-white/10 text-white/70' : 'border-line bg-canvas text-ink-muted',
           )}
         >
-          <div className="container-page flex h-9 items-center justify-between gap-6">
-            <div className="flex items-center gap-5">
-              {isDialable(settings.contact.phone) ? (
-                <a href={telHref(settings.contact.phone)} className="inline-flex items-center gap-1.5 hover:text-current">
-                  <Phone aria-hidden className="size-3.5" />
-                  {settings.contact.phone}
-                </a>
-              ) : (
-                <span className="inline-flex items-center gap-1.5">
-                  <Phone aria-hidden className="size-3.5" />
-                  {settings.contact.phone}
-                </span>
-              )}
-              {isEmail(settings.contact.email) ? (
-                <a href={`mailto:${settings.contact.email}`} className="inline-flex items-center gap-1.5">
-                  <Mail aria-hidden className="size-3.5" />
-                  {settings.contact.email}
-                </a>
-              ) : (
-                <span className="inline-flex items-center gap-1.5">
-                  <Mail aria-hidden className="size-3.5" />
-                  {settings.contact.email}
-                </span>
-              )}
-            </div>
-            <div className="flex items-center gap-5">
-              <SearchTrigger variant="bar" onDark={onDark} className="w-[19rem]" />
-              <nav aria-label="Utility">
-                <ul className="flex items-center gap-5">
-                  {navigation.utility.map((link) => (
-                    <li key={link.href}>
-                      <AppLink href={link.href} className={cn('transition-colors', onDark ? 'hover:text-white' : 'hover:text-ink')}>
-                        {link.label}
-                      </AppLink>
-                    </li>
-                  ))}
-                </ul>
-              </nav>
-            </div>
+          <div className="container-page flex h-9 items-center justify-start gap-6">
+            {isDialable(settings.contact.phone) ? (
+              <a href={telHref(settings.contact.phone)} className="inline-flex items-center gap-1.5 hover:text-current">
+                <Phone aria-hidden className="size-3.5" />
+                {settings.contact.phone}
+              </a>
+            ) : (
+              <span className="inline-flex items-center gap-1.5">
+                <Phone aria-hidden className="size-3.5" />
+                {settings.contact.phone}
+              </span>
+            )}
+            {isEmail(settings.contact.email) ? (
+              <a href={`mailto:${settings.contact.email}`} className="inline-flex items-center gap-1.5 hover:text-current">
+                <Mail aria-hidden className="size-3.5" />
+                {settings.contact.email}
+              </a>
+            ) : (
+              <span className="inline-flex items-center gap-1.5">
+                <Mail aria-hidden className="size-3.5" />
+                {settings.contact.email}
+              </span>
+            )}
           </div>
         </div>
       </div>
@@ -170,8 +154,8 @@ export function Header() {
             <DesktopNav items={navigation.main} onDark={onDark} value={menuValue} onValueChange={setMenuValue} />
           </div>
           <div className="flex shrink-0 items-center gap-1 sm:gap-1.5">
-            {/* Compact search for mobile/tablet, and on desktop once the search bar in the top strip scrolls away. */}
-            <SearchTrigger variant="icon" onDark={onDark} className={cn(!scrolled && 'xl:hidden')} />
+            {/* Compact search (opens the search dialog; Ctrl/⌘K also works). */}
+            <SearchTrigger variant="icon" onDark={onDark} />
             <ThemeToggle onDark={onDark} />
             <ButtonLink href="/enquire" size="sm" variant="accent" className="ml-1 hidden sm:inline-flex">
               Enquire Now

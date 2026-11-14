@@ -1,5 +1,6 @@
 import { motion, useInView, useScroll, useSpring } from 'motion/react'
 import { useRef } from 'react'
+import { Icon } from '@/components/ui/Icon'
 import { Section, SectionHeader } from '@/components/ui/Section'
 import { Reveal } from '@/components/motion/Reveal'
 import { cn } from '@/lib/cn'
@@ -35,8 +36,42 @@ function StepItem({ index, title, text, meta }: { index: number; title: string; 
   )
 }
 
+/** Horizontal numbered journey — red circles joined by a line, like the AIT mockup. */
+function RowSteps({ block, className }: BlockProps<'steps'>) {
+  return (
+    <Section background={block.background} className={className} id={block.id}>
+      <SectionHeader align="center" eyebrow={block.eyebrow} heading={block.heading} intro={block.intro} />
+      <div className="relative">
+        {/* Connecting line behind the circles on desktop. */}
+        <div aria-hidden className="absolute inset-x-[10%] top-10 hidden h-px bg-line lg:block" />
+        <Reveal>
+          <ol className="relative grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-5">
+            {block.items.map((item, index) => (
+              <li key={item.title} className="flex flex-col items-center text-center">
+                {/* Big icon, small number badge in the corner. */}
+                <span className="relative grid size-20 place-items-center rounded-full bg-accent text-on-accent shadow-lg shadow-accent/30 ring-4 ring-canvas">
+                  {item.icon ? <Icon name={item.icon} className="size-10" /> : <span className="font-display text-3xl font-semibold">{index + 1}</span>}
+                  <span className="absolute -right-1 -top-1 grid size-6 place-items-center rounded-full bg-white font-display text-xs font-bold text-accent shadow-sm ring-2 ring-accent">
+                    {index + 1}
+                  </span>
+                </span>
+                <h3 className="mt-5 text-base font-semibold text-ink">
+                  <span className="sr-only">Step {index + 1}: </span>
+                  {item.title}
+                </h3>
+                <p className="mt-1.5 text-sm leading-relaxed text-ink-muted">{item.text}</p>
+              </li>
+            ))}
+          </ol>
+        </Reveal>
+      </div>
+    </Section>
+  )
+}
+
 /** Numbered process with a line that fills as you scroll through the steps. */
 export function StepsBlock({ block, className }: BlockProps<'steps'>) {
+  if (block.variant === 'row') return <RowSteps block={block} className={className} />
   const listRef = useRef<HTMLOListElement>(null)
   const { scrollYProgress } = useScroll({ target: listRef, offset: ['start 70%', 'end 55%'] })
   const fill = useSpring(scrollYProgress, { stiffness: 120, damping: 30, restDelta: 0.001 })

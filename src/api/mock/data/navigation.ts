@@ -2,12 +2,12 @@ import type { Navigation } from '@/api/types'
 import { media } from './media'
 
 export const navigation: Navigation = {
-  // Simple navigation per the client brief: Home · About · Courses · How It Works · Partners · Contact.
+  // Navigation per the AIT mockup: Home · About AIT · Programmes · How It Works · Partners · Campuses · Contact.
   main: [
     { label: 'Home', href: '/' },
-    { label: 'About', href: '/about' },
+    { label: 'About AIT', href: '/about' },
     {
-      label: 'Courses',
+      label: 'Programmes',
       href: '/courses',
       groups: [
         {
@@ -40,6 +40,7 @@ export const navigation: Navigation = {
     },
     { label: 'How It Works', href: '/how-it-works' },
     { label: 'Partners', href: '/partners' },
+    { label: 'Campuses', href: '/campuses' },
     { label: 'Contact', href: '/contact' },
   ],
   utility: [

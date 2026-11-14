@@ -14,7 +14,7 @@ export function LogoImage({ className }: { className?: string }) {
       srcSet="/brand/crest-800.png 800w, /brand/crest-1536.png 1536w"
       sizes="(min-width: 640px) 142px, 112px"
       width={800}
-      height={515}
+      height={486}
       alt=""
       decoding="async"
       className={cn('h-14 w-auto select-none sm:h-[4.5rem]', className)}
