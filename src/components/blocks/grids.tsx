@@ -1,6 +1,8 @@
-import { ArrowUpRight, Check } from 'lucide-react'
+import { ArrowRight, ArrowUpRight, Check } from 'lucide-react'
+import type { PanelTone } from '@/api/types'
 import { AppLink } from '@/components/ui/AppLink'
 import { Icon } from '@/components/ui/Icon'
+import { SmartImage } from '@/components/ui/SmartImage'
 import { Section, SectionHeader } from '@/components/ui/Section'
 import { Spotlight } from '@/components/motion/effects'
 import { Reveal, Stagger, StaggerItem } from '@/components/motion/Reveal'
@@ -13,67 +15,125 @@ const columnClasses = {
   4: 'sm:grid-cols-2 lg:grid-cols-4',
 } as const
 
+// Soft background tones for coloured panels (Vision/Mission/Values, outcomes).
+const toneClass: Record<PanelTone, string> = {
+  rose: 'bg-rose-50 ring-rose-100 dark:bg-rose-950/30 dark:ring-rose-900/40',
+  blue: 'bg-sky-50 ring-sky-100 dark:bg-sky-950/30 dark:ring-sky-900/40',
+  amber: 'bg-amber-50 ring-amber-100 dark:bg-amber-950/30 dark:ring-amber-900/40',
+  emerald: 'bg-emerald-50 ring-emerald-100 dark:bg-emerald-950/30 dark:ring-emerald-900/40',
+}
+const toneCycle: PanelTone[] = ['rose', 'blue', 'amber', 'emerald']
+
 export function FeatureGridBlock({ block, className }: BlockProps<'featureGrid'>) {
   const variant = block.variant ?? 'cards'
   const columns = columnClasses[block.columns ?? 3]
+
+  const grid = (
+    <Stagger className={cn('grid gap-5', columns, variant === 'icons' && 'gap-x-8 gap-y-12')}>
+      {block.items.map((item, index) => {
+        const tone = item.tone ?? toneCycle[index % toneCycle.length]
+        const iconBadge =
+          variant === 'numbered' ? (
+            <span className="font-display text-5xl font-semibold leading-none text-transparent [-webkit-text-stroke:1.5px_var(--accent)]">
+              {String(index + 1).padStart(2, '0')}
+            </span>
+          ) : (
+            item.icon && (
+              <span
+                className={cn(
+                  'grid place-items-center transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]',
+                  variant === 'panels'
+                    ? 'size-16 rounded-2xl bg-white text-accent shadow-sm ring-1 ring-black/5 group-hover:scale-105 dark:bg-white/10'
+                    : variant === 'icons'
+                      ? 'size-14 rounded-2xl bg-gradient-to-br from-primary to-brand-800 text-white shadow-lg shadow-primary/25 group-hover:-rotate-6 group-hover:scale-110'
+                      : 'size-16 rounded-2xl bg-accent-soft text-accent group-hover:bg-accent group-hover:text-on-accent',
+                )}
+              >
+                <Icon name={item.icon} className={variant === 'icons' ? 'size-6' : 'size-8'} />
+              </span>
+            )
+          )
+        const body = (
+          <>
+            {iconBadge}
+            <h3 className={cn('font-semibold text-ink', variant === 'icons' ? 'mt-6 text-lg' : 'mt-5 text-lg')}>{item.title}</h3>
+            <p className="mt-2 leading-relaxed text-ink-muted">{item.text}</p>
+            {item.href && variant !== 'cards' && (
+              <span className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-primary-ink">
+                {item.linkLabel ?? 'Learn more'}
+                <ArrowUpRight aria-hidden className="size-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+              </span>
+            )}
+            {/* Red circular arrow button, like the mockup, for linked cards. */}
+            {item.href && variant === 'cards' && (
+              <span
+                aria-hidden
+                className="mt-6 grid size-10 place-items-center rounded-full bg-accent text-on-accent shadow-sm transition-transform duration-300 group-hover:translate-x-1"
+              >
+                <ArrowRight className="size-5" />
+              </span>
+            )}
+          </>
+        )
+        const cardClass =
+          variant === 'icons'
+            ? 'group relative'
+            : variant === 'panels'
+              ? cn('group relative h-full rounded-3xl p-7 ring-1 transition-all duration-500 hover:-translate-y-1', toneClass[tone])
+              : 'group relative h-full overflow-hidden rounded-3xl border border-line bg-surface shadow-card transition-all duration-500 hover:-translate-y-1 hover:border-accent/40 hover:shadow-card-hover'
+        // Cards can carry a photo thumbnail (matches the AIT programme cards); content is then padded inside.
+        const content =
+          variant === 'cards' ? (
+            <>
+              {item.image && (
+                <div className="relative aspect-[16/10] overflow-hidden">
+                  <SmartImage image={item.image} hoverZoom sizes="(min-width: 1024px) 28vw, 90vw" className="size-full" />
+                </div>
+              )}
+              <div className="p-7">{body}</div>
+            </>
+          ) : (
+            body
+          )
+        return (
+          <StaggerItem key={item.title} className="h-full">
+            {variant === 'icons' || variant === 'panels' ? (
+              <div className={cardClass}>{item.href ? <AppLink href={item.href} className="block">{body}</AppLink> : body}</div>
+            ) : (
+              <Spotlight className="h-full rounded-3xl">
+                {item.href ? (
+                  <AppLink href={item.href} className={cn(cardClass, 'block')}>
+                    {content}
+                  </AppLink>
+                ) : (
+                  <div className={cardClass}>{content}</div>
+                )}
+              </Spotlight>
+            )}
+          </StaggerItem>
+        )
+      })}
+    </Stagger>
+  )
+
+  if (block.aside) {
+    return (
+      <Section background={block.background} className={className} id={block.id}>
+        <div className="grid gap-10 lg:grid-cols-12 lg:gap-14">
+          <div className="lg:col-span-4">
+            <div className="lg:sticky lg:top-32">
+              <SectionHeader eyebrow={block.eyebrow} heading={block.heading} intro={block.intro} className="mb-0 sm:mb-0" />
+            </div>
+          </div>
+          <div className="lg:col-span-8">{grid}</div>
+        </div>
+      </Section>
+    )
+  }
   return (
     <Section background={block.background} className={className} id={block.id}>
       <SectionHeader eyebrow={block.eyebrow} heading={block.heading} intro={block.intro} />
-      <Stagger className={cn('grid gap-5', columns, variant === 'icons' && 'gap-x-8 gap-y-12')}>
-        {block.items.map((item, index) => {
-          const body = (
-            <>
-              {variant === 'numbered' ? (
-                <span className="font-display text-5xl font-semibold leading-none text-transparent [-webkit-text-stroke:1.5px_var(--accent)]">
-                  {String(index + 1).padStart(2, '0')}
-                </span>
-              ) : (
-                item.icon && (
-                  <span
-                    className={cn(
-                      'grid place-items-center transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]',
-                      variant === 'icons'
-                        ? 'size-14 rounded-2xl bg-gradient-to-br from-primary to-brand-800 text-white shadow-lg shadow-primary/25 group-hover:-rotate-6 group-hover:scale-110'
-                        : 'size-12 rounded-2xl bg-primary-soft text-on-primary-soft group-hover:bg-primary group-hover:text-on-primary',
-                    )}
-                  >
-                    <Icon name={item.icon} className={variant === 'icons' ? 'size-6' : 'size-5'} />
-                  </span>
-                )
-              )}
-              <h3 className="mt-6 text-lg font-semibold text-ink">{item.title}</h3>
-              <p className="mt-2 leading-relaxed text-ink-muted">{item.text}</p>
-              {item.href && (
-                <span className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-primary-ink">
-                  {item.linkLabel ?? 'Learn more'}
-                  <ArrowUpRight aria-hidden className="size-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-                </span>
-              )}
-            </>
-          )
-          const cardClass =
-            variant === 'icons'
-              ? 'group relative'
-              : 'group relative h-full rounded-3xl border border-line bg-surface p-7 shadow-card transition-all duration-500 hover:-translate-y-1 hover:border-primary/30 hover:shadow-card-hover'
-          return (
-            <StaggerItem key={item.title} className="h-full">
-              {variant === 'icons' ? (
-                <div className={cardClass}>{item.href ? <AppLink href={item.href} className="block">{body}</AppLink> : body}</div>
-              ) : (
-                <Spotlight className="h-full rounded-3xl">
-                  {item.href ? (
-                    <AppLink href={item.href} className={cn(cardClass, 'block')}>
-                      {body}
-                    </AppLink>
-                  ) : (
-                    <div className={cardClass}>{body}</div>
-                  )}
-                </Spotlight>
-              )}
-            </StaggerItem>
-          )
-        })}
-      </Stagger>
+      {grid}
     </Section>
   )
 }

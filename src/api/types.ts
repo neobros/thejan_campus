@@ -661,6 +661,9 @@ export type ModuleName =
   | 'enquiryForm'
   | 'agentEnquiryForm'
 
+/** Soft background tones for coloured feature panels (Vision/Mission/Values, outcomes). */
+export type PanelTone = 'rose' | 'blue' | 'amber' | 'emerald'
+
 export type Block =
   | (BlockBase & SectionIntro & { type: 'richText'; body: Markdown; width?: 'narrow' | 'wide' })
   | (BlockBase & {
@@ -672,11 +675,13 @@ export type Block =
   | (BlockBase &
       SectionIntro & {
         type: 'featureGrid'
-        variant?: 'cards' | 'icons' | 'numbered'
+        variant?: 'cards' | 'icons' | 'numbered' | 'panels'
         columns?: 2 | 3 | 4
-        items: { title: string; text: string; icon?: IconName; href?: string; linkLabel?: string }[]
+        /** Heading on the left, cards on the right (matches the AIT section layout). */
+        aside?: boolean
+        items: { title: string; text: string; icon?: IconName; href?: string; linkLabel?: string; tone?: PanelTone; image?: ImageAsset }[]
       })
-  | (BlockBase & SectionIntro & { type: 'steps'; items: { title: string; text: string; meta?: string }[] })
+  | (BlockBase & SectionIntro & { type: 'steps'; variant?: 'timeline' | 'row'; items: { title: string; text: string; meta?: string; icon?: IconName }[] })
   | (BlockBase &
       SectionIntro & {
         type: 'checklist'

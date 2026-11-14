@@ -68,7 +68,12 @@ export function BlockRenderer({ blocks }: { blocks: Block[] }) {
         const background = block.background ?? 'default'
         const previous = index > 0 ? (blocks[index - 1].background ?? 'default') : null
         const joined = previous === background && block.type !== 'callout'
-        return <div key={block.id}>{renderBlock(block, joined ? 'pt-0!' : undefined)}</div>
+        // block.id doubles as an in-page anchor target; offset it below the fixed header.
+        return (
+          <div key={block.id} id={block.id} className="scroll-mt-24">
+            {renderBlock(block, joined ? 'pt-0!' : undefined)}
+          </div>
+        )
       })}
     </>
   )

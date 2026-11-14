@@ -7,7 +7,7 @@
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 import sharp from 'sharp'
-import { mkdirSync, readdirSync, statSync, writeFileSync } from 'node:fs'
+import { existsSync, mkdirSync, readFileSync, readdirSync, statSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
 
 const OUT_DIR = 'public/images'
@@ -16,18 +16,29 @@ const WIDTHS = [640, 1024, 1600, 2400]
 
 const sources = []
 let concept = false
+let merge = false
 for (const arg of process.argv.slice(2)) {
   if (arg === '--concept') concept = true
+  else if (arg === '--merge') merge = true
   else sources.push({ dir: arg, concept })
 }
 if (!sources.length) {
-  console.error('Usage: npm run images -- <folder> [<folder>…] [--concept <folder>]')
+  console.error('Usage: npm run images -- <folder> [<folder>…] [--concept <folder>] [--merge]')
   process.exit(1)
 }
 
 mkdirSync(OUT_DIR, { recursive: true })
 const entries = {}
 let bytes = 0
+
+// --merge: keep the existing slot map and only add/replace the slots in these folders.
+if (merge && existsSync(TS_OUT)) {
+  const match = readFileSync(TS_OUT, 'utf8').match(/providedImages[^=]*=\s*(\{[\s\S]*?\})\s*$/)
+  if (match) {
+    Object.assign(entries, JSON.parse(match[1]))
+    console.log(`merging with ${Object.keys(entries).length} existing slots`)
+  }
+}
 
 for (const { dir, concept: isConcept } of sources) {
   for (const file of readdirSync(dir).filter((f) => /\.(jpe?g|png)$/i.test(f)).sort()) {
