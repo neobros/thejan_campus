@@ -18,39 +18,6 @@ function page(load: () => Promise<PageModule>): Pick<RouteObject, 'lazy'> {
   }
 }
 
-const contentPage = () => import('@/pages/ContentPage')
-
-/** CMS-driven pages (spec §4). Conditional pages 404 automatically when the CMS does not publish them. */
-const CONTENT_PATHS = [
-  'how-it-works',
-  'about/team',
-  'partners',
-  'admissions',
-  'admissions/entry-requirements',
-  'admissions/fees',
-  'admissions/intakes',
-  'admissions/scholarships',
-  'admissions/credit-transfer',
-  'international',
-  'international/pre-arrival',
-  'international/living-and-studying',
-  'international/agents',
-  'domestic',
-  'student-life',
-  'student-support',
-  'student-support/orientation',
-  'student-resources',
-  'downloads',
-  'policies',
-  'faq',
-  'campuses',
-  'gallery',
-  'contact',
-  'privacy',
-  'terms',
-  'accessibility',
-]
-
 async function rootLoader() {
   const [settings] = await Promise.all([
     queryClient.ensureQueryData(queries.settings()),
@@ -73,23 +40,11 @@ export const router = createBrowserRouter([
       {
         ErrorBoundary: RouteErrorBoundary,
         children: [
+          // Pre-launch: only Home and About AIT are live. Every other route shows the branded
+          // Coming Soon screen until the remaining pages are ready to publish.
           { index: true, ...page(() => import('@/pages/HomePage')) },
           { path: 'about', ...page(() => import('@/pages/AboutPage')) },
-          ...CONTENT_PATHS.map((path) => ({ path, ...page(contentPage) })),
-          { path: 'courses', ...page(() => import('@/pages/courses/CoursesPage')) },
-          { path: 'courses/category/:slug', ...page(() => import('@/pages/courses/CourseCategoryPage')) },
-          { path: 'courses/:slug', ...page(() => import('@/pages/courses/CourseDetailPage')) },
-          { path: 'campuses/:slug', ...page(() => import('@/pages/campuses/CampusDetailPage')) },
-          { path: 'news', ...page(() => import('@/pages/news/NewsPage')) },
-          { path: 'news/:slug', ...page(() => import('@/pages/news/ArticlePage')) },
-          { path: 'events', ...page(() => import('@/pages/events/EventsPage')) },
-          { path: 'events/:slug', ...page(() => import('@/pages/events/EventPage')) },
-          { path: 'policies/:slug', ...page(() => import('@/pages/policies/PolicyPage')) },
-          { path: 'apply', ...page(() => import('@/pages/apply/ApplyPage')) },
-          { path: 'apply/confirmation', ...page(() => import('@/pages/apply/ApplyConfirmationPage')) },
-          { path: 'enquire', ...page(() => import('@/pages/EnquirePage')) },
-          { path: 'search', ...page(() => import('@/pages/SearchPage')) },
-          { path: '*', ...page(() => import('@/pages/NotFoundPage')) },
+          { path: '*', ...page(() => import('@/pages/ComingSoonPage')) },
         ],
       },
     ],
